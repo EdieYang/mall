@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linkpets.dao.ShopInfoMapper">
+    <resultMap id="BaseResultMap" type="com.linkpets.model.ShopInfo">
+        <id column="shop_id" jdbcType="VARCHAR" property="shopId"/>
+        <result column="shop_name" jdbcType="VARCHAR" property="shopName"/>
+        <result column="linkman" jdbcType="VARCHAR" property="linkman"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="wechat" jdbcType="VARCHAR" property="wechat"/>
+        <result column="open_time" jdbcType="VARCHAR" property="openTime"/>
+        <result column="shop_phone" jdbcType="VARCHAR" property="shopPhone"/>
+        <result column="address_district" jdbcType="VARCHAR" property="addressDistrict"/>
+        <result column="address_detail" jdbcType="VARCHAR" property="addressDetail"/>
+        <result column="shop_status" jdbcType="VARCHAR" property="shopStatus"/>
+        <result column="sale_show" jdbcType="VARCHAR" property="saleShow"/>
+        <result column="online_settle" jdbcType="VARCHAR" property="onlineSettle"/>
+        <result column="settle_rate" jdbcType="INTEGER" property="settleRate"/>
+        <result column="create_date" jdbcType="DATE" property="createDate"/>
+        <result column="del_flag" jdbcType="VARCHAR" property="delFlag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        shop_id, shop_name, linkman, mobile, wechat, open_time, shop_phone, address_district,
+    address_detail, shop_status, sale_show, online_settle,  settle_rate, create_date,del_flag
+    </sql>
+    <insert id="insertSelective" parameterType="com.linkpets.model.ShopInfo">
+        insert into shop_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="shopName != null">
+                shop_name,
+            </if>
+            <if test="linkman != null">
+                linkman,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="wechat != null">
+                wechat,
+            </if>
+            <if test="openTime != null">
+                open_time,
+            </if>
+            <if test="shopPhone != null">
+                shop_phone,
+            </if>
+            <if test="addressDistrict != null">
+                address_district,
+            </if>
+            <if test="addressDetail != null">
+                address_detail,
+            </if>
+            <if test="shopStatus != null">
+                shop_status,
+            </if>
+            <if test="saleShow != null">
+                sale_show,
+            </if>
+            <if test="onlineSettle != null">
+                online_settle,
+            </if>
+            <if test="settleRate != null">
+                settle_rate,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="shopId != null">
+                #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="shopName != null">
+                #{shopName,jdbcType=VARCHAR},
+            </if>
+            <if test="linkman != null">
+                #{linkman,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="wechat != null">
+                #{wechat,jdbcType=VARCHAR},
+            </if>
+            <if test="openTime != null">
+                #{openTime,jdbcType=VARCHAR},
+            </if>
+            <if test="shopPhone != null">
+                #{shopPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="addressDistrict != null">
+                #{addressDistrict,jdbcType=VARCHAR},
+            </if>
+            <if test="addressDetail != null">
+                #{addressDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="shopStatus != null">
+                #{shopStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="saleShow != null">
+                #{saleShow,jdbcType=VARCHAR},
+            </if>
+            <if test="onlineSettle != null">
+                #{onlineSettle,jdbcType=INTEGER},
+            </if>
+            <if test="settleRate != null">
+                #{settleRate,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=DATE},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.linkpets.model.ShopInfo">
+        update shop_info
+        <set>
+            <if test="shopName != null">
+                shop_name = #{shopName,jdbcType=VARCHAR},
+            </if>
+            <if test="linkman != null">
+                linkman = #{linkman,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="wechat != null">
+                wechat = #{wechat,jdbcType=VARCHAR},
+            </if>
+            <if test="openTime != null">
+                open_time = #{openTime,jdbcType=VARCHAR},
+            </if>
+            <if test="shopPhone != null">
+                shop_phone = #{shopPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="addressDistrict != null">
+                address_district = #{addressDistrict,jdbcType=VARCHAR},
+            </if>
+            <if test="addressDetail != null">
+                address_detail = #{addressDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="shopStatus != null">
+                shop_status = #{shopStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="saleShow != null">
+                sale_show = #{saleShow},
+            </if>
+            <if test="onlineSettle != null">
+                online_settle = #{onlineSettle},
+            </if>
+            <if test="settleRate != null">
+                settle_rate = #{settleRate},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where shop_id = #{shopId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="getList" parameterType="java.lang.String" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT shop_id                              AS shopId,
+               shop_name                            AS shopName,
+               linkman,
+               mobile,
+               wechat,
+               address_district                     AS addressDistrict,
+               address_detail                       AS addressDetail,
+               shop_status                          AS shopStatus,
+               del_flag                             AS delFlag,
+               DATE_FORMAT(create_date, '%Y-%m-%d') as createDate
+        FROM shop_info
+        WHERE del_flag = '0'
+    </select>
+</mapper>

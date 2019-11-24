@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linkpets.dao.CommoditySpecMapper">
+  <resultMap id="BaseResultMap" type="com.linkpets.model.CommoditySpec">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="commodity_id" jdbcType="VARCHAR" property="commodityId" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="market_price" jdbcType="DECIMAL" property="marketPrice" />
+    <result column="selling_price" jdbcType="DECIMAL" property="sellingPrice" />
+    <result column="purchase_price" jdbcType="DECIMAL" property="purchasePrice" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, commodity_id, spec_name, market_price, selling_price, purchase_price, stock, 
+    del_flag
+  </sql>
+  <insert id="insertSelective" parameterType="com.linkpets.model.CommoditySpec">
+    insert into commodity_spec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="specName != null">
+        spec_name,
+      </if>
+      <if test="marketPrice != null">
+        market_price,
+      </if>
+      <if test="sellingPrice != null">
+        selling_price,
+      </if>
+      <if test="purchasePrice != null">
+        purchase_price,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=VARCHAR},
+      </if>
+      <if test="specName != null">
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null">
+        #{marketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sellingPrice != null">
+        #{sellingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="purchasePrice != null">
+        #{purchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.linkpets.model.CommoditySpec">
+    update commodity_spec
+    <set>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=VARCHAR},
+      </if>
+      <if test="specName != null">
+        spec_name = #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null">
+        market_price = #{marketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sellingPrice != null">
+        selling_price = #{sellingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="purchasePrice != null">
+        purchase_price = #{purchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

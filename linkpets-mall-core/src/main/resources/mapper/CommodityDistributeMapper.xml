@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linkpets.dao.CommodityDistributeMapper">
+  <resultMap id="BaseResultMap" type="com.linkpets.model.CommodityDistribute">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="commodity_id" jdbcType="VARCHAR" property="commodityId" />
+    <result column="grade" jdbcType="INTEGER" property="grade" />
+    <result column="commission" jdbcType="DECIMAL" property="commission" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, commodity_id, grade, commission, del_flag, create_date
+  </sql>
+  <insert id="insertSelective" parameterType="com.linkpets.model.CommodityDistribute">
+    insert into commodity_distribute
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="commission != null">
+        commission,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.linkpets.model.CommodityDistribute">
+    update commodity_distribute
+    <set>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="commission != null">
+        commission = #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
