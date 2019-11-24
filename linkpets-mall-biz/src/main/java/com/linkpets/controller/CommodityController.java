@@ -60,9 +60,6 @@ public class CommodityController {
         if (StringUtils.isEmpty(commodityInfo.getCommodityType())) {
             return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_TYPE);
         }
-        if (StringUtils.isEmpty(commodityInfo.getCommodityStatus())) {
-            return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_STATUS);
-        }
         if (StringUtils.isEmpty(commodityInfo.getCommodityPattern())) {
             return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_PATTERN);
         }

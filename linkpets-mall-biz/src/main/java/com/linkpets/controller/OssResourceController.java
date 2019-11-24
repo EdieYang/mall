@@ -1,6 +1,7 @@
 package com.linkpets.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.linkpets.result.ApiResult;
 import com.linkpets.utils.OssUtil;
 import com.linkpets.utils.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,9 @@ public class OssResourceController {
      * @version V1.0   
      */
     @PostMapping(value = "upload")
-    public JSONObject uploadFileToOss(@RequestParam("path") String path,
-                                      @RequestParam(value = "fileName", required = false) String fileName,
-                                      @RequestParam("file") MultipartFile file) throws IOException {
+    public ApiResult uploadFileToOss(@RequestParam("path") String path,
+                                     @RequestParam(value = "fileName", required = false) String fileName,
+                                     @RequestParam("file") MultipartFile file) throws IOException {
         if (StringUtils.isEmpty(fileName)) {
             String origFileName=file.getOriginalFilename();
             String fileType=origFileName.substring(origFileName.lastIndexOf("."));
@@ -48,7 +49,7 @@ public class OssResourceController {
         res.put("fileName", fileName);
         res.put("fileSize", file.getSize());
         res.put("fileType", file.getContentType());
-        return res;
+        return ApiResult.valueOf(res);
     }
 
 }
