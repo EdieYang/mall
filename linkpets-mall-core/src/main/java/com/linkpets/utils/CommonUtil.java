@@ -1,5 +1,6 @@
 package com.linkpets.utils;
 
+import com.linkpets.mallEnum.SerialNumberEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
@@ -47,6 +48,9 @@ public class CommonUtil {
     // 订单号默认格式,长度为8位
     private static final String DEFULT_ORDER_NUMBER_FORMAT = "00000000";
 
+    // 商品编号默认格式,长度为4位
+    private static final String DEFULT_COMMODITY_NUMBER_FORMAT = "0000";
+
     // 流水号(短)默认格式,长度为4位
     private static final String DEFULT_SHORT_NUMBER_FORMAT = "0000";
 
@@ -84,40 +88,29 @@ public class CommonUtil {
 
     /**
      * 生成流水号
-     *
-     * @param prefix
+     * @param serialNumberEnum
      * @return
      */
-    public static String getSerialNumberByPrefix(String prefix) {
-
-        if ("pet".equals(prefix)) {// pet-yyyyMM0001
-            SimpleDateFormat df = new SimpleDateFormat("yyyyMM");
-            String dateValue = df.format(new Date());
-            String numHeader = prefix + "-" + dateValue;
-            String redisKey = prefix + "-number";
-            if (!commonUtil.redisUtil.hHasKey(redisKey, dateValue)) {
-                commonUtil.redisUtil.hset(redisKey, dateValue, 0);
-            }
-
-            DecimalFormat df2 = new DecimalFormat(DEFULT_SHORT_NUMBER_FORMAT);
-            int num = (int) commonUtil.redisUtil.hincr(redisKey, dateValue, 1);
-            return String.valueOf(num).length() > DEFULT_SHORT_NUMBER_FORMAT.length() ? numHeader + num
-                    : numHeader + df2.format(num);
-        } else {
-            SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
-            String dateValue = df.format(new Date());
-            String numHeader = prefix + "-" + dateValue;
-            String redisKey = prefix + "-number";
-            if (!commonUtil.redisUtil.hHasKey(redisKey, dateValue)) {
-                commonUtil.redisUtil.hset(redisKey, dateValue, 0);
-            }
-
-            DecimalFormat df2 = new DecimalFormat(DEFULT_ORDER_NUMBER_FORMAT);
-            int num = (int) commonUtil.redisUtil.hincr(redisKey, dateValue, 1);
-
-            return String.valueOf(num).length() > DEFULT_ORDER_NUMBER_FORMAT.length() ? numHeader + num
-                    : numHeader + df2.format(num);
+    public static String getSerialNumberByPrefix(SerialNumberEnum serialNumberEnum) {
+        String dateValue = DateFormatUtils.getFormatDateStr("yyyyMMdd");
+        String numHeader = serialNumberEnum.getPrefix() + dateValue;
+        String redisKey = serialNumberEnum.getPrefix() + "-number";
+        if (!commonUtil.redisUtil.hHasKey(redisKey, dateValue)) {
+            commonUtil.redisUtil.hset(redisKey, dateValue, 0);
         }
+        String defaultNumberFormat = "";
+        switch (serialNumberEnum) {
+            case COMMODITY_PREFIX:
+                defaultNumberFormat = DEFULT_COMMODITY_NUMBER_FORMAT;
+                break;
+            default:
+                break;
+        }
+        DecimalFormat df2 = new DecimalFormat(defaultNumberFormat);
+        int num = (int) commonUtil.redisUtil.hincr(redisKey, dateValue, 1);
+
+        return String.valueOf(num).length() > defaultNumberFormat.length() ? numHeader + num
+                : numHeader + df2.format(num);
     }
 
     /**
@@ -127,7 +120,7 @@ public class CommonUtil {
      * @return
      */
     public static int getSerialNumberLengthByPrefix(String prefix) {
-        return (prefix + "-" + "yyyyMMdd" + DEFULT_ORDER_NUMBER_FORMAT).length();
+        return (prefix + "yyyyMMdd" + DEFULT_COMMODITY_NUMBER_FORMAT).length();
     }
 
     public static String uuid() {

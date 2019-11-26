@@ -2,7 +2,6 @@ package com.linkpets.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -24,11 +23,11 @@ public class CommodityInfo {
 
     private String saleDate;
 
-    private BigDecimal marketPrice;
+    private Integer marketPrice;
 
-    private BigDecimal sellingPrice;
+    private Integer sellingPrice;
 
-    private BigDecimal purchasePrice;
+    private Integer purchasePrice;
 
     private Integer stock;
 
@@ -92,7 +91,7 @@ public class CommodityInfo {
     public CommodityInfo() {
     }
 
-    public CommodityInfo(String commodityId, String commodityName, String commodityType, String commodityStatus, String commodityPattern, String displayImg, String saleDate, BigDecimal marketPrice, BigDecimal sellingPrice, BigDecimal purchasePrice, Integer stock, Integer stockWarn, String distributed, String commodityRules, String commodityUsage, String commodityDetail, String multiSpec, String recommended, String shopId, Integer saleCount, Integer browseCount, String showStock, String showSale, String verificationType, String verificationDate, Integer purchaseLimit, String csContact, String csWxcode, String shareTitle, String shareInfo, String shareWapImg, String shareMiniImg, String sharePost, Integer purchasePoints, String refundType, String appointment, String createBy, Date createTime, String delFlag) {
+    public CommodityInfo(String commodityId, String commodityName, String commodityType, String commodityStatus, String commodityPattern, String displayImg, String saleDate, Integer marketPrice, Integer sellingPrice, Integer purchasePrice, Integer stock, Integer stockWarn, String distributed, String commodityRules, String commodityUsage, String commodityDetail, String multiSpec, String recommended, String shopId, Integer saleCount, Integer browseCount, String showStock, String showSale, String verificationType, String verificationDate, Integer purchaseLimit, String csContact, String csWxcode, String shareTitle, String shareInfo, String shareWapImg, String shareMiniImg, String sharePost, Integer purchasePoints, String refundType, String appointment, String createBy, Date createTime, String delFlag) {
         this.commodityId = commodityId;
         this.commodityName = commodityName;
         this.commodityType = commodityType;
@@ -146,9 +145,9 @@ public class CommodityInfo {
         this.commodityPattern = commodityPattern;
         this.displayImg = displayImg;
         this.saleDate = saleDate;
-        this.marketPrice = new BigDecimal(0);
-        this.sellingPrice = new BigDecimal(0);
-        this.purchasePrice = new BigDecimal(0);
+        this.marketPrice = new Integer(0);
+        this.sellingPrice = new Integer(0);
+        this.purchasePrice = new Integer(0);
         this.stock = 0;
         this.stockWarn = 0;
         this.distributed = distributed;
@@ -236,27 +235,27 @@ public class CommodityInfo {
         this.saleDate = saleDate;
     }
 
-    public BigDecimal getMarketPrice() {
+    public Integer getMarketPrice() {
         return marketPrice;
     }
 
-    public void setMarketPrice(BigDecimal marketPrice) {
+    public void setMarketPrice(Integer marketPrice) {
         this.marketPrice = marketPrice;
     }
 
-    public BigDecimal getSellingPrice() {
+    public Integer getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(BigDecimal sellingPrice) {
+    public void setSellingPrice(Integer sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
-    public BigDecimal getPurchasePrice() {
+    public Integer getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(BigDecimal purchasePrice) {
+    public void setPurchasePrice(Integer purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 

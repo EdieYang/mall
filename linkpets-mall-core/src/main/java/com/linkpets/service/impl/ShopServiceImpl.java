@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.linkpets.dao.ShopImgMapper;
 import com.linkpets.dao.ShopInfoMapper;
+import com.linkpets.mallEnum.SerialNumberEnum;
 import com.linkpets.service.IShopService;
 import com.linkpets.model.ShopImg;
 import com.linkpets.model.ShopInfo;
@@ -53,7 +54,7 @@ public class ShopServiceImpl implements IShopService {
     @Transactional
     @Override
     public void crtShop(JSONObject shop) {
-        String shopId = CommonUtil.getSerialNumberByPrefix("shop");
+        String shopId = CommonUtil.getSerialNumberByPrefix(SerialNumberEnum.SHOP_PREFIX);
         ShopInfo info = JSONObject.toJavaObject(shop, ShopInfo.class);
         info.setShopId(shopId);
         info.setCreateDate(new Date());

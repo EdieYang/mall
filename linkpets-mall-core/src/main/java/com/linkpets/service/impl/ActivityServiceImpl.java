@@ -3,6 +3,7 @@ package com.linkpets.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.linkpets.mallEnum.SerialNumberEnum;
 import com.linkpets.utils.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class ActivityServiceImpl implements IActivityService{
 	@Transactional
 	@Override
 	public void crtActivity(JSONObject activity) {
-		String activityId = CommonUtil.getSerialNumberByPrefix("activity");
+		String activityId = CommonUtil.getSerialNumberByPrefix(SerialNumberEnum.ACTIVITY_PREFIX);
 		ActivityInfo info = JSONObject.toJavaObject(activity, ActivityInfo.class);
 		info.setActivityId(activityId);
 		activityInfoMapper.insertSelective(info);

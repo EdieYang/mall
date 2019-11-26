@@ -4,10 +4,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.linkpets.dao.CommodityImgMapper;
 import com.linkpets.dao.CommodityInfoMapper;
+import com.linkpets.mallEnum.SerialNumberEnum;
 import com.linkpets.model.*;
 import com.linkpets.responseModel.commodity.CommodityInfoTable;
 import com.linkpets.service.ICommodityService;
 import com.linkpets.utils.CommonUtil;
+import com.linkpets.utils.UUIDUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,10 +40,11 @@ public class CommodityServiceImpl implements ICommodityService {
     @Transactional(rollbackFor = Exception.class)
     public String crtCommodityInfo(CommodityInfo commodityInfo, List<CommodityImg> commodityImgList, List<CommoditySpec> commoditySpecList,
                                    List<CommodityDistribute> commodityDistributeList, List<CommodityAppointment> commodityAppointmentList) {
-        String commodityId = CommonUtil.getSerialNumberByPrefix("CO");
+        String commodityId = CommonUtil.getSerialNumberByPrefix(SerialNumberEnum.COMMODITY_PREFIX);
         commodityInfo.setCommodityId(commodityId);
         commodityInfoMapper.insertSelective(commodityInfo);
         commodityImgList.forEach(commodityImg -> {
+            commodityImg.setCommodityImgId(UUIDUtils.getId());
             commodityImg.setCommodityId(commodityId);
             commodityImgMapper.insertSelective(commodityImg);
         });
