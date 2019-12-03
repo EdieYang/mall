@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 
 @Api(tags = "客服服务")
 @RestController
-@RequestMapping("/customerSupportService")
+@RequestMapping("/customerSupport")
 public class CustomerSupportController {
 
     @Resource
