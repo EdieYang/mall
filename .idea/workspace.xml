@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e651ca1f-3621-4c06-9438-b36db64432f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/linkpets-mall-biz/src/main/java/com/linkpets/controller/CustomerSupportController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linkpets-mall-core/src/main/java/com/linkpets/dao/CustomerSupportMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linkpets-mall-core/src/main/java/com/linkpets/model/CustomerSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linkpets-mall-core/src/main/java/com/linkpets/service/ICustomerSupportService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linkpets-mall-core/src/main/java/com/linkpets/service/impl/CustomerSupportServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linkpets-mall-core/src/main/resources/mapper/CustomerSupportMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linkpets-mall-biz/src/main/resources/application-local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/linkpets-mall-biz/src/main/resources/application-local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linkpets-mall-core/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/linkpets-mall-core/src/main/resources/generatorConfig.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,20 +36,13 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>filePathPrefix</find>
-      <find>aliyun.oss.contractPath</find>
-      <find>project_version</find>
-      <find>redisTemplate</find>
-      <find>commons-pool2</find>
-      <find>red</find>
-      <find>min</find>
-      <find>minEvictableIdleTimeMillis</find>
-    </findStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$</dir>
-    </dirStrings>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,10 +58,14 @@
   </component>
   <component name="MavenRunner">
     <option name="delegateBuildToMaven" value="true" />
-    <option name="jreName" value="1.8.0_221" />
+    <option name="jreName" value="1.8.0_73" />
   </component>
   <component name="ProjectId" id="1U3cn5yoiJBuzNVpIq69GD7QJDh" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -76,7 +80,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24117647" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
     <property name="show.run.dashboard.notification" value="false" />
   </component>
   <component name="RecentsManager">
@@ -146,6 +150,7 @@
       <workItem from="1574567247091" duration="4935000" />
       <workItem from="1574582808016" duration="888000" />
       <workItem from="1574588883793" duration="2179000" />
+      <workItem from="1575353936168" duration="7582000" />
     </task>
     <task id="LOCAL-00001" summary="重构架构">
       <created>1572544958594</created>
@@ -179,7 +184,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -188,6 +195,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="重构架构" />
     <MESSAGE value="重构架构成单体应用1.0" />
     <option name="LAST_COMMIT_MESSAGE" value="重构架构成单体应用1.0" />

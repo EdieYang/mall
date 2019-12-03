@@ -9,9 +9,9 @@
         <result column="commodity_pattern" jdbcType="VARCHAR" property="commodityPattern"/>
         <result column="display_img" jdbcType="VARCHAR" property="displayImg"/>
         <result column="sale_date" jdbcType="VARCHAR" property="saleDate"/>
-        <result column="market_price" jdbcType="DECIMAL" property="marketPrice"/>
-        <result column="selling_price" jdbcType="DECIMAL" property="sellingPrice"/>
-        <result column="purchase_price" jdbcType="DECIMAL" property="purchasePrice"/>
+        <result column="market_price" jdbcType="INTEGER" property="marketPrice"/>
+        <result column="selling_price" jdbcType="INTEGER" property="sellingPrice"/>
+        <result column="purchase_price" jdbcType="INTEGER" property="purchasePrice"/>
         <result column="stock" jdbcType="INTEGER" property="stock"/>
         <result column="stock_warn" jdbcType="INTEGER" property="stockWarn"/>
         <result column="distributed" jdbcType="VARCHAR" property="distributed"/>

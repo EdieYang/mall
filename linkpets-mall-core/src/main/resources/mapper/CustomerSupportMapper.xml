@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linkpets.dao.CustomerSupportMapper">
+  <resultMap id="BaseResultMap" type="com.linkpets.model.CustomerSupport">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="wxcode_url" jdbcType="VARCHAR" property="wxcodeUrl" />
+    <result column="available_time" jdbcType="VARCHAR" property="availableTime" />
+    <result column="belong_type" jdbcType="CHAR" property="belongType" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, wechat, phone, wxcode_url, available_time, belong_type, del_flag, create_date
+  </sql>
+  <insert id="insertSelective" parameterType="com.linkpets.model.CustomerSupport">
+    insert into customer_support
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="wxcodeUrl != null">
+        wxcode_url,
+      </if>
+      <if test="availableTime != null">
+        available_time,
+      </if>
+      <if test="belongType != null">
+        belong_type,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="wxcodeUrl != null">
+        #{wxcodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="availableTime != null">
+        #{availableTime,jdbcType=VARCHAR},
+      </if>
+      <if test="belongType != null">
+        #{belongType,jdbcType=CHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.linkpets.model.CustomerSupport">
+    update customer_support
+    <set>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="wxcodeUrl != null">
+        wxcode_url = #{wxcodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="availableTime != null">
+        available_time = #{availableTime,jdbcType=VARCHAR},
+      </if>
+      <if test="belongType != null">
+        belong_type = #{belongType,jdbcType=CHAR},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
