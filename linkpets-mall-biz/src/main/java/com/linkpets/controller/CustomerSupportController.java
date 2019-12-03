@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @Author Edie
  */
 
-@Api("客服服务")
+@Api(tags = "客服服务")
 @RestController
 @RequestMapping("/customerSupportService")
 public class CustomerSupportController {
@@ -35,7 +35,7 @@ public class CustomerSupportController {
 
     @ApiOperation("分页获取客服列表")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "belongType", value = "归属类型 0：平台客服 1:公益客服", required = true)
+            @ApiImplicitParam(value = "归属类型 0：平台客服 1:公益客服", required = true)
     })
     @GetMapping("/page")
     public ApiResult getCustomerServicePage(@RequestParam("belongType") String belongType,
@@ -54,6 +54,13 @@ public class CustomerSupportController {
     @PutMapping()
     public ApiResult uptCustomerService(@RequestBody CustomerSupport customerSupport) {
         customerSupportService.uptCustomerSupport(customerSupport);
+        return ApiResult.success();
+    }
+
+    @ApiOperation("删除客服")
+    @DeleteMapping("/{id}")
+    public ApiResult delCustomerService(@PathVariable("id") String id) {
+        customerSupportService.delCustomerSupport(id);
         return ApiResult.success();
     }
 }

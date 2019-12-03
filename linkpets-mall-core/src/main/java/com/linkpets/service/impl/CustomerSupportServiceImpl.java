@@ -9,6 +9,7 @@ import com.linkpets.utils.UUIDUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ public class CustomerSupportServiceImpl implements ICustomerSupportService {
     public String crtCustomerSupport(CustomerSupport customerService) {
         String id = UUIDUtils.getId();
         customerService.setId(id);
+        customerService.setCreateDate(new Date());
         customerSupportMapper.insertSelective(customerService);
         return id;
     }
@@ -32,6 +34,11 @@ public class CustomerSupportServiceImpl implements ICustomerSupportService {
     @Override
     public void uptCustomerSupport(CustomerSupport customerService) {
         customerSupportMapper.updateByPrimaryKeySelective(customerService);
+    }
+
+    @Override
+    public void delCustomerSupport(String id) {
+        customerSupportMapper.deleteByPrimaryKey(id);
     }
 
     @Override

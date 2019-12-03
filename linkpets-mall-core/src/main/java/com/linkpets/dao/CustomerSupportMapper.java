@@ -11,7 +11,8 @@ import java.util.List;
 
 public interface CustomerSupportMapper {
     @Delete({
-            "delete from customer_support",
+            "update customer_support",
+            "set del_flag = '0'",
             "where id = #{id,jdbcType=VARCHAR}"
     })
     int deleteByPrimaryKey(String id);

@@ -28,6 +28,12 @@ public interface ICustomerSupportService {
     void uptCustomerSupport(CustomerSupport customerService);
 
     /**
+     * 删除客服
+     * @param id
+     */
+    void delCustomerSupport(String id);
+
+    /**
      * 分页获取客服信息
      *
      * @param belongType 归属类型 0：商城渠道客服 1：公益渠道客服
@@ -47,6 +53,7 @@ public interface ICustomerSupportService {
 
     /**
      * 获取客服信息
+     *
      * @param id
      * @return
      */

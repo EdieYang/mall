@@ -8,18 +8,21 @@ import com.linkpets.responseModel.commodity.CommodityInfoTable;
 import com.linkpets.service.ICommodityService;
 import com.linkpets.result.ApiResult;
 import com.linkpets.result.ApiResultCode;
+import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Api(tags = "商品服务")
 @RestController
 @RequestMapping("/commodity")
 public class CommodityController {
 
     @Resource
     private ICommodityService commodityService;
+
 
     @GetMapping("list")
     public PageInfo<CommodityInfoTable> listCommodityInfoTable(@RequestParam(value = "commodityName", required = false) String commodityName,

@@ -9,24 +9,30 @@ import java.util.Date;
 public class CustomerSupport {
     private String id;
 
-    @ApiModelProperty("微信号")
+    @ApiModelProperty(value = "微信号", required = true)
     private String wechat;
 
-    @ApiModelProperty("联系方式")
+    @ApiModelProperty(value = "联系方式", required = true, position = 1)
     private String phone;
 
-    @ApiModelProperty("微信号二维码")
+    @ApiModelProperty(value = "微信号二维码", required = true, position = 2)
     private String wxcodeUrl;
 
-    @ApiModelProperty("服务时间")
+    @ApiModelProperty(value = "服务时间", required = true, position = 3)
     private String availableTime;
 
-    @ApiModelProperty("归属类型  0：平台客服 1：公益客服")
+    @ApiModelProperty(value = "归属类型  0：平台客服 1：公益客服", required = true, position = 4)
     private String belongType;
 
+    @ApiModelProperty(hidden = true)
     private String delFlag;
 
+    @ApiModelProperty(hidden = true)
     private Date createDate;
+
+    public CustomerSupport() {
+        this.createDate = new Date();
+    }
 
     public String getId() {
         return id;
