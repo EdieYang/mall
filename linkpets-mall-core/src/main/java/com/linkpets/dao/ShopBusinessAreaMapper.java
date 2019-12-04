@@ -51,7 +51,7 @@ public interface ShopBusinessAreaMapper {
     @Select({
             "select",
             "id, area_name, del_flag, create_date",
-            "from shop_business_area where del_flag = '0'"
+            "from shop_business_area where del_flag = '1'"
     })
     @ResultMap("com.linkpets.dao.ShopBusinessAreaMapper.BaseResultMap")
     List<ShopBusinessArea> listShopBusinessArea();

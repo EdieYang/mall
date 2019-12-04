@@ -29,6 +29,7 @@ public interface ICustomerSupportService {
 
     /**
      * 删除客服
+     *
      * @param id
      */
     void delCustomerSupport(String id);
@@ -36,20 +37,24 @@ public interface ICustomerSupportService {
     /**
      * 分页获取客服信息
      *
+     * @param wechat
+     * @param phone
      * @param belongType 归属类型 0：商城渠道客服 1：公益渠道客服
      * @param pageNum
      * @param pageSize
      * @return
      */
-    PageInfo<CustomerSupport> getCustomerSupportPage(String belongType, int pageNum, int pageSize);
+    PageInfo<CustomerSupport> getCustomerSupportPage(String wechat, String phone, String belongType, int pageNum, int pageSize);
 
     /**
      * 获取客服列表
      *
+     * @param wechat
+     * @param phone
      * @param belongType
      * @return
      */
-    List<CustomerSupport> getCustomerSupportList(String belongType);
+    List<CustomerSupport> getCustomerSupportList(String wechat, String phone, String belongType);
 
     /**
      * 获取客服信息

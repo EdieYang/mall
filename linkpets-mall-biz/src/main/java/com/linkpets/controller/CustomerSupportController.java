@@ -28,20 +28,32 @@ public class CustomerSupportController {
         return ApiResult.valueOf(customerSupportService.getCustomerSupport(id));
     }
 
+    @ApiOperation("获取客服列表")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "wechat", value = "微信号"),
+            @ApiImplicitParam(name = "phone", value = "手机号"),
+            @ApiImplicitParam(name = "belongType", value = "归属类型 0：平台客服 1:公益客服", required = true)
+    })
     @GetMapping("/list")
-    public ApiResult getCustomerServiceList(@RequestParam("belongType") String belongType) {
-        return ApiResult.valueOf(customerSupportService.getCustomerSupportList(belongType));
+    public ApiResult getCustomerServiceList(@RequestParam(value = "wechat", required = false) String wechat,
+                                            @RequestParam(value = "phone", required = false) String phone,
+                                            @RequestParam("belongType") String belongType) {
+        return ApiResult.valueOf(customerSupportService.getCustomerSupportList(wechat, phone, belongType));
     }
 
     @ApiOperation("分页获取客服列表")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "归属类型 0：平台客服 1:公益客服", required = true)
+            @ApiImplicitParam(name = "wechat", value = "微信号"),
+            @ApiImplicitParam(name = "phone", value = "手机号"),
+            @ApiImplicitParam(name = "belongType", value = "归属类型 0：平台客服 1:公益客服", required = true)
     })
     @GetMapping("/page")
-    public ApiResult getCustomerServicePage(@RequestParam("belongType") String belongType,
+    public ApiResult getCustomerServicePage(@RequestParam(value = "wechat", required = false) String wechat,
+                                            @RequestParam(value = "phone", required = false) String phone,
+                                            @RequestParam("belongType") String belongType,
                                             @RequestParam("pageNum") int pageNum,
                                             @RequestParam("pageSize") int pageSize) {
-        return ApiResult.valueOf(customerSupportService.getCustomerSupportPage(belongType, pageNum, pageSize));
+        return ApiResult.valueOf(customerSupportService.getCustomerSupportPage(wechat, phone, belongType, pageNum, pageSize));
     }
 
     @ApiOperation("新增客服")

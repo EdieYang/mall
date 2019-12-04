@@ -103,6 +103,9 @@ public class CommonUtil {
             case COMMODITY_PREFIX:
                 defaultNumberFormat = DEFULT_COMMODITY_NUMBER_FORMAT;
                 break;
+            case SHOP_PREFIX:
+                defaultNumberFormat = DEFULT_SHORT_NUMBER_FORMAT;
+                break;
             default:
                 break;
         }

@@ -37,8 +37,8 @@ public interface CommodityImgMapper {
 	
 	@Update({
         "update commodity_img",
-        "set del_flag = '1'",
-        "where del_flag = '0' and commodity_id = #{commodityId,jdbcType=VARCHAR}"
+        "set del_flag = '0'",
+        "where del_flag = '1' and commodity_id = #{commodityId,jdbcType=VARCHAR}"
     })
 	void delImg(String commodityId);
 }

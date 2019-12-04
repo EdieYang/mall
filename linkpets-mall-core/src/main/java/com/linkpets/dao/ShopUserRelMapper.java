@@ -52,7 +52,7 @@ public interface ShopUserRelMapper {
             "select",
             "id, shop_id, user_id, create_date, update_date, del_flag",
             "from shop_user_rel",
-            "where user_id = #{userId} and shop_id = #{shopId} and del_flag = '0' "
+            "where user_id = #{userId} and shop_id = #{shopId} and del_flag = '1' "
     })
     ShopUserRel selectByUserIdAndShopId(String userId, String shopId);
 }

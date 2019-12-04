@@ -42,15 +42,15 @@ public class CustomerSupportServiceImpl implements ICustomerSupportService {
     }
 
     @Override
-    public PageInfo<CustomerSupport> getCustomerSupportPage(String belongType, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<CustomerSupport> customerServiceList = customerSupportMapper.getCustomerSupportList(belongType);
+    public PageInfo<CustomerSupport> getCustomerSupportPage(String wechat, String phone, String belongType, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize, "create_date desc");
+        List<CustomerSupport> customerServiceList = customerSupportMapper.getCustomerSupportList(wechat, phone, belongType);
         return new PageInfo<>(customerServiceList);
     }
 
     @Override
-    public List<CustomerSupport> getCustomerSupportList(String belongType) {
-        return customerSupportMapper.getCustomerSupportList(belongType);
+    public List<CustomerSupport> getCustomerSupportList(String wechat, String phone, String belongType) {
+        return customerSupportMapper.getCustomerSupportList(wechat, phone, belongType);
     }
 
     @Override

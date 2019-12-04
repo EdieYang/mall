@@ -55,14 +55,6 @@ public interface CustomerSupportMapper {
     })
     int updateByPrimaryKey(CustomerSupport record);
 
-    @Select({
-            "select",
-            "id, wechat, phone, wxcode_url, available_time, belong_type, del_flag, create_date",
-            "from customer_support",
-            "where belong_type = #{belongType,jdbcType=VARCHAR}",
-            "and del_flag = '1'"
-    })
-    @ResultMap("com.linkpets.dao.CustomerSupportMapper.BaseResultMap")
-    List<CustomerSupport> getCustomerSupportList(String belongType);
+    List<CustomerSupport> getCustomerSupportList(String wechat, String phone, String belongType);
 
 }

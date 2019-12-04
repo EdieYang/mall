@@ -154,7 +154,7 @@
 	  activity_info t_a 
 	  LEFT JOIN shop_info t_s 
 	    ON t_a.shop_id = t_s.shop_id 
-       WHERE t_a.del_flag = '0'
+       WHERE t_a.del_flag = '1'
        <if test="activityStatus != null">
            t_a.activity_status = #{activityStatus,jdbcType=VARCHAR},
        </if>

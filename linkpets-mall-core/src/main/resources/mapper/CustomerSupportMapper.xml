@@ -96,4 +96,16 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="getCustomerSupportList" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from customer_support
+    where belong_type = #{belongType,jdbcType=VARCHAR}
+    <if test="wechat!=null and wechat!=''">
+      and wechat like CONCAT(#{},'%')
+    </if>
+    <if test="phone!=null and phone!=''">
+      and phone like CONCAT(#{},'%')
+    </if>
+    and del_flag = '1'
+  </select>
 </mapper>

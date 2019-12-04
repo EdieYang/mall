@@ -84,8 +84,8 @@ public interface ShopImgMapper {
 
     @Update({
         "update shop_img",
-        "set del_flag = '1'",
-        "where del_flag = '0' and shop_id = #{shopId,jdbcType=VARCHAR}"
+        "set del_flag = '0'",
+        "where del_flag = '1' and shop_id = #{shopId,jdbcType=VARCHAR}"
     })
 	void delImg(String shopId);
 
