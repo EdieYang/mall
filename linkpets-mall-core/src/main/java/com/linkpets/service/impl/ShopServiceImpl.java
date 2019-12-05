@@ -40,15 +40,15 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-    public JSONObject getShopListForPage(Map<String, Object> param, int pageNum, int pageSize, String orderBy) {
-        JSONObject result = new JSONObject();
+    public PageInfo<Map<String, Object>> getShopPage(Map<String, Object> param, int pageNum, int pageSize, String orderBy) {
         PageHelper.startPage(pageNum, pageSize, orderBy);
-        List<Map<String, Object>> list = shopInfoMapper.getList(param);
-        PageInfo<Map<String, Object>> page = new PageInfo<Map<String, Object>>(list);
-        result.put("page", page.getPageNum());
-        result.put("total", page.getTotal());
-        result.put("rows", list);
-        return result;
+        List<Map<String, Object>> list = shopInfoMapper.getListByParam(param);
+        return new PageInfo<>(list);
+    }
+
+    @Override
+    public List<Map<String, Object>> getShopList() {
+        return shopInfoMapper.getList();
     }
 
     @Transactional

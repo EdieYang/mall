@@ -1,9 +1,12 @@
 package com.linkpets.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.github.pagehelper.PageInfo;
 import com.linkpets.mallEnum.SerialNumberEnum;
+import com.linkpets.result.ApiResult;
 import com.linkpets.service.IShopService;
 import com.linkpets.utils.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,16 +42,24 @@ public class ShopController {
      * @date 2019年9月24日 下午6:33:28 
      * @version V1.0   
      */
-    @GetMapping("/list")
-    public JSONObject getShopList(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize,
-                                  @RequestParam(value = "search", required = false) String search,
-                                  @RequestParam(value = "sortCol", required = false, defaultValue = "shopName") String sortCol,
-                                  @RequestParam(value = "sort", required = false, defaultValue = "asc") String sort) {
+    @GetMapping("/page")
+    public ApiResult getShopPage(@RequestParam("pageNum") int pageNum,
+                                 @RequestParam("pageSize") int pageSize,
+                                 @RequestParam(value = "search", required = false) String search,
+                                 @RequestParam(value = "sortCol", required = false, defaultValue = "shopName") String sortCol,
+                                 @RequestParam(value = "sort", required = false, defaultValue = "asc") String sort) {
 
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("search", search);
-        JSONObject data = shopService.getShopListForPage(param, pageNum, pageSize, sortCol + " " + sort);
-        return data;
+        PageInfo<Map<String, Object>> shopPage = shopService.getShopPage(param, pageNum, pageSize, sortCol + " " + sort);
+        return ApiResult.valueOf(shopPage);
+    }
+
+
+    @GetMapping("/list")
+    public ApiResult getShopList() {
+        List<Map<String,Object>> shopList = shopService.getShopList();
+        return ApiResult.valueOf(shopList);
     }
 
     /**
@@ -92,6 +103,5 @@ public class ShopController {
     public void uptShop(@RequestBody JSONObject data) {
         shopService.uptShop(data);
     }
-
 
 }

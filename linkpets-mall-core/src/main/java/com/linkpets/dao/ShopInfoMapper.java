@@ -67,7 +67,9 @@ public interface ShopInfoMapper {
     })
     int updateByPrimaryKey(ShopInfo record);
 
-    List<Map<String, Object>> getList(Map<String, Object> param);
+    List<Map<String, Object>> getListByParam(Map<String, Object> param);
+
+    List<Map<String, Object>> getList();
 
     @Select({
             "select",

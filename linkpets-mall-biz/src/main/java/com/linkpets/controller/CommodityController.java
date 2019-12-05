@@ -2,12 +2,14 @@ package com.linkpets.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.linkpets.entity.CommodityInfoReq;
+import com.linkpets.mallEnum.SerialNumberEnum;
 import com.linkpets.model.CommodityImg;
 import com.linkpets.model.CommodityInfo;
 import com.linkpets.responseModel.commodity.CommodityInfoTable;
 import com.linkpets.service.ICommodityService;
 import com.linkpets.result.ApiResult;
 import com.linkpets.result.ApiResultCode;
+import com.linkpets.utils.CommonUtil;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,10 @@ public class CommodityController {
     @Resource
     private ICommodityService commodityService;
 
+    @GetMapping("id")
+    public ApiResult getCommodityId() {
+        return ApiResult.valueOf(CommonUtil.getSerialNumberByPrefix(SerialNumberEnum.COMMODITY_PREFIX));
+    }
 
     @GetMapping("list")
     public PageInfo<CommodityInfoTable> listCommodityInfoTable(@RequestParam(value = "commodityName", required = false) String commodityName,
@@ -42,7 +48,7 @@ public class CommodityController {
         if (validResult != null) {
             return validResult;
         }
-        String commodityId = commodityService.crtCommodityInfo(commodityInfoReq.getCommodityInfo(),commodityInfoReq.getCommodityImgList(),commodityInfoReq.getCommoditySpecList(),commodityInfoReq.getCommodityDistributeList(),commodityInfoReq.getCommodityAppointmentList());
+        String commodityId = commodityService.crtCommodityInfo(commodityInfoReq.getCommodityInfo(), commodityInfoReq.getCommodityImgList(), commodityInfoReq.getCommoditySpecList(), commodityInfoReq.getCommodityDistributeList(), commodityInfoReq.getCommodityAppointmentList());
         return ApiResult.valueOf(commodityId);
     }
 
@@ -52,7 +58,7 @@ public class CommodityController {
         if (validResult != null) {
             return validResult;
         }
-        commodityService.uptCommodityInfo(commodityInfoReq.getCommodityInfo(),commodityInfoReq.getCommodityImgList(),commodityInfoReq.getCommoditySpecList(),commodityInfoReq.getCommodityDistributeList(),commodityInfoReq.getCommodityAppointmentList());
+        commodityService.uptCommodityInfo(commodityInfoReq.getCommodityInfo(), commodityInfoReq.getCommodityImgList(), commodityInfoReq.getCommoditySpecList(), commodityInfoReq.getCommodityDistributeList(), commodityInfoReq.getCommodityAppointmentList());
         return ApiResult.success();
     }
 
