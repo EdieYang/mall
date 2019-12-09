@@ -8,20 +8,20 @@ import java.util.List;
 
 public interface ICommodityService {
 
-    /**
-     * 获取商品table列表
-     *
-     * @param commodityName
-     * @param commodityId
-     * @param shopId
-     * @param commodityPattern
-     * @param commodityStatus
-     * @param recommended
-     * @param pageNum
-     * @param pageSize
-     * @return
-     */
-    PageInfo<CommodityInfoTable> listCommodityInfoTable(String commodityName, String commodityId, String shopId, String commodityPattern, String commodityStatus, String recommended, int pageNum, int pageSize);
+//    /**
+//     * 获取商品table列表
+//     *
+//     * @param commodityName
+//     * @param commodityId
+//     * @param shopId
+//     * @param commodityPattern
+//     * @param commodityStatus
+//     * @param recommended
+//     * @param pageNum
+//     * @param pageSize
+//     * @return
+//     */
+//    PageInfo<CommodityInfoTable> listCommodityInfoTable(String commodityName, String commodityId, String shopId, String commodityPattern, String commodityStatus, String recommended, int pageNum, int pageSize);
 
     /**
      * 创建商品信息
@@ -39,4 +39,13 @@ public interface ICommodityService {
      * @param commodityImgList
      */
     void uptCommodityInfo(CommodityInfo commodityInfo, List<CommodityImg> commodityImgList, List<CommoditySpec> commoditySpecList, List<CommodityDistribute> commodityDistributeList, List<CommodityAppointment> commodityAppointmentList);
+
+
+    /**
+     * 更新商品状态（下架、待审核、过审、上架）
+     *
+     * @param commodityId
+     * @param commodityStatus
+     */
+    void uptCommodityStatus(String commodityId, String commodityStatus);
 }

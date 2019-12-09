@@ -30,17 +30,17 @@ public class CommodityController {
         return ApiResult.valueOf(CommonUtil.getSerialNumberByPrefix(SerialNumberEnum.COMMODITY_PREFIX));
     }
 
-    @GetMapping("list")
-    public PageInfo<CommodityInfoTable> listCommodityInfoTable(@RequestParam(value = "commodityName", required = false) String commodityName,
-                                                               @RequestParam(value = "commodityId", required = false) String commodityId,
-                                                               @RequestParam(value = "shopId", required = false) String shopId,
-                                                               @RequestParam(value = "commodityPattern", required = false) String commodityPattern,
-                                                               @RequestParam(value = "commodityStatus", required = false) String commodityStatus,
-                                                               @RequestParam(value = "recommended", required = false) String recommended,
-                                                               @RequestParam(value = "pageNum") int pageNum,
-                                                               @RequestParam(value = "pageSize") int pageSize) {
-        return commodityService.listCommodityInfoTable(commodityName, commodityId, shopId, commodityPattern, commodityStatus, recommended, pageNum, pageSize);
-    }
+//    @GetMapping("list")
+//    public PageInfo<CommodityInfoTable> listCommodityInfoTable(@RequestParam(value = "commodityName", required = false) String commodityName,
+//                                                               @RequestParam(value = "commodityId", required = false) String commodityId,
+//                                                               @RequestParam(value = "shopId", required = false) String shopId,
+//                                                               @RequestParam(value = "commodityPattern", required = false) String commodityPattern,
+//                                                               @RequestParam(value = "commodityStatus", required = false) String commodityStatus,
+//                                                               @RequestParam(value = "recommended", required = false) String recommended,
+//                                                               @RequestParam(value = "pageNum") int pageNum,
+//                                                               @RequestParam(value = "pageSize") int pageSize) {
+//        return commodityService.listCommodityInfoTable(commodityName, commodityId, shopId, commodityPattern, commodityStatus, recommended, pageNum, pageSize);
+//    }
 
     @PostMapping()
     public ApiResult crtCommodityInfo(@RequestBody CommodityInfoReq commodityInfoReq) {
@@ -62,7 +62,18 @@ public class CommodityController {
         return ApiResult.success();
     }
 
+    @PutMapping("commodityStatus")
+    public ApiResult uptCommodityStatus(@RequestParam("commodityId") String commodityId,
+                                        @RequestParam("commodityStatus") String commodityStatus) {
+        commodityService.uptCommodityStatus(commodityId, commodityStatus);
+        return ApiResult.success();
+    }
+
+
     private ApiResult validCommodityInfo(CommodityInfo commodityInfo, List<CommodityImg> commodityImgList) {
+        if (StringUtils.isEmpty(commodityInfo.getCommodityId())) {
+            return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_ID);
+        }
         if (StringUtils.isEmpty(commodityInfo.getCommodityName())) {
             return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_NAME);
         }
@@ -107,12 +118,6 @@ public class CommodityController {
         }
         if (StringUtils.isEmpty(commodityInfo.getShareWapImg())) {
             return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_SHARE_WAP_IMG);
-        }
-        if (StringUtils.isEmpty(commodityInfo.getCsContact())) {
-            return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_CS_CONTACT);
-        }
-        if (StringUtils.isEmpty(commodityInfo.getCsWxcode())) {
-            return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_CS_WXCODE);
         }
         if (commodityImgList == null || commodityImgList.size() == 0) {
             return ApiResult.errorOf(ApiResultCode.COMMODITY_INVALID_IMG);

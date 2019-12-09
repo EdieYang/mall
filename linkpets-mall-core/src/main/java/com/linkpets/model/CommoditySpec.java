@@ -1,7 +1,5 @@
 package com.linkpets.model;
 
-import java.math.BigDecimal;
-
 public class CommoditySpec {
     private String id;
 
@@ -9,11 +7,13 @@ public class CommoditySpec {
 
     private String specName;
 
-    private BigDecimal marketPrice;
+    private Integer marketPrice;
 
-    private BigDecimal sellingPrice;
+    private Integer sellingPrice;
 
-    private BigDecimal purchasePrice;
+    private Integer charityPrice;
+
+    private Integer purchasePrice;
 
     private Integer stock;
 
@@ -43,27 +43,35 @@ public class CommoditySpec {
         this.specName = specName;
     }
 
-    public BigDecimal getMarketPrice() {
+    public Integer getMarketPrice() {
         return marketPrice;
     }
 
-    public void setMarketPrice(BigDecimal marketPrice) {
+    public void setMarketPrice(Integer marketPrice) {
         this.marketPrice = marketPrice;
     }
 
-    public BigDecimal getSellingPrice() {
+    public Integer getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(BigDecimal sellingPrice) {
+    public void setSellingPrice(Integer sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
-    public BigDecimal getPurchasePrice() {
+    public Integer getCharityPrice() {
+        return charityPrice;
+    }
+
+    public void setCharityPrice(Integer charityPrice) {
+        this.charityPrice = charityPrice;
+    }
+
+    public Integer getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(BigDecimal purchasePrice) {
+    public void setPurchasePrice(Integer purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 

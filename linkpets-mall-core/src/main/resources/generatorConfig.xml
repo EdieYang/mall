@@ -2,8 +2,8 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
 	
-		<classPathEntry location="C:\Users\Gaga\.IntelliJIdea2019.2\config\jdbc-drivers\MySQL Connector\J 8\8.0.15\mysql-connector-java-8.0.15.jar" />
-<!--		<classPathEntry location="/Users/edie/.m2/repository/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar" />-->
+<!--		<classPathEntry location="C:\Users\Gaga\.IntelliJIdea2019.2\config\jdbc-drivers\MySQL Connector\J 8\8.0.15\mysql-connector-java-8.0.15.jar" />-->
+		<classPathEntry location="/Users/edie/.m2/repository/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar" />
 
 
 	<context id="context1">
@@ -35,7 +35,7 @@
 		<javaClientGenerator targetPackage="com.linkpets.dao"
 			targetProject="src/main/java" type="MIXEDMAPPER" />
 
-		<table schema="linkpets-core" tableName="customer_support"
+		<table schema="linkpets-core" tableName="commodity_spec"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="true">
@@ -55,7 +55,9 @@
 		                JDBC      :相当于在生成的insert元素上添加useGeneratedKeys="true"和keyProperty属性
                 -->
         	<!-- <generatedKey column="account_id" sqlStatement="MySql"  identity="true"/> -->
-			
+<!--			<columnOverride column="commodity_rules" jdbcType="VARCHAR" />-->
+<!--			<columnOverride column="commodity_usage" jdbcType="VARCHAR" />-->
+<!--			<columnOverride column="commodity_detail" jdbcType="VARCHAR" />-->
 		</table>
 	</context>
 </generatorConfiguration>

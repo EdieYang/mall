@@ -1,19 +1,15 @@
 package com.linkpets.model;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
-/**
- * @author edie
- */
 public class CommodityInfo {
-
     private String commodityId;
 
     private String commodityName;
 
     private String commodityType;
+
+    private String commodityChannel;
 
     private String commodityStatus;
 
@@ -22,6 +18,8 @@ public class CommodityInfo {
     private String displayImg;
 
     private String saleDate;
+
+    private Integer charityPrice;
 
     private Integer marketPrice;
 
@@ -61,9 +59,7 @@ public class CommodityInfo {
 
     private Integer purchaseLimit;
 
-    private String csContact;
-
-    private String csWxcode;
+    private String customerSupportId;
 
     private String shareTitle;
 
@@ -83,101 +79,11 @@ public class CommodityInfo {
 
     private String createBy;
 
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
+    private Date updateTime;
+
     private String delFlag;
-
-    public CommodityInfo() {
-    }
-
-    public CommodityInfo(String commodityId, String commodityName, String commodityType, String commodityStatus, String commodityPattern, String displayImg, String saleDate, Integer marketPrice, Integer sellingPrice, Integer purchasePrice, Integer stock, Integer stockWarn, String distributed, String commodityRules, String commodityUsage, String commodityDetail, String multiSpec, String recommended, String shopId, Integer saleCount, Integer browseCount, String showStock, String showSale, String verificationType, String verificationDate, Integer purchaseLimit, String csContact, String csWxcode, String shareTitle, String shareInfo, String shareWapImg, String shareMiniImg, String sharePost, Integer purchasePoints, String refundType, String appointment, String createBy, Date createTime, String delFlag) {
-        this.commodityId = commodityId;
-        this.commodityName = commodityName;
-        this.commodityType = commodityType;
-        this.commodityStatus = commodityStatus;
-        this.commodityPattern = commodityPattern;
-        this.displayImg = displayImg;
-        this.saleDate = saleDate;
-        this.marketPrice = marketPrice;
-        this.sellingPrice = sellingPrice;
-        this.purchasePrice = purchasePrice;
-        this.stock = stock;
-        this.stockWarn = stockWarn;
-        this.distributed = distributed;
-        this.commodityRules = commodityRules;
-        this.commodityUsage = commodityUsage;
-        this.commodityDetail = commodityDetail;
-        this.multiSpec = multiSpec;
-        this.recommended = recommended;
-        this.shopId = shopId;
-        this.saleCount = saleCount;
-        this.browseCount = browseCount;
-        this.showStock = showStock;
-        this.showSale = showSale;
-        this.verificationType = verificationType;
-        this.verificationDate = verificationDate;
-        this.purchaseLimit = purchaseLimit;
-        this.csContact = csContact;
-        this.csWxcode = csWxcode;
-        this.shareTitle = shareTitle;
-        this.shareInfo = shareInfo;
-        this.shareWapImg = shareWapImg;
-        this.shareMiniImg = shareMiniImg;
-        this.sharePost = sharePost;
-        this.purchasePoints = purchasePoints;
-        this.refundType = refundType;
-        this.appointment = appointment;
-        this.createBy = createBy;
-        this.createTime = createTime;
-        this.delFlag = delFlag;
-    }
-
-    public CommodityInfo(String commodityId, String commodityName, String commodityType, String commodityStatus, String commodityPattern, String displayImg, String saleDate,
-                         String distributed, String commodityRules, String commodityUsage, String commodityDetail, String multiSpec, String recommended, String shopId,
-                         String showStock, String showSale, String verificationType, String verificationDate, Integer purchaseLimit, String csContact, String csWxcode,
-                         String shareTitle, String shareInfo, String shareWapImg, String shareMiniImg, String sharePost, Integer purchasePoints, String refundType, String appointment,
-                         String createBy, Date createTime, String delFlag) {
-        this.commodityId = commodityId;
-        this.commodityName = commodityName;
-        this.commodityType = commodityType;
-        this.commodityStatus = commodityStatus;
-        this.commodityPattern = commodityPattern;
-        this.displayImg = displayImg;
-        this.saleDate = saleDate;
-        this.marketPrice = new Integer(0);
-        this.sellingPrice = new Integer(0);
-        this.purchasePrice = new Integer(0);
-        this.stock = 0;
-        this.stockWarn = 0;
-        this.distributed = distributed;
-        this.commodityRules = commodityRules;
-        this.commodityUsage = commodityUsage;
-        this.commodityDetail = commodityDetail;
-        this.multiSpec = multiSpec;
-        this.recommended = recommended;
-        this.shopId = shopId;
-        this.saleCount = 0;
-        this.browseCount = 0;
-        this.showStock = showStock;
-        this.showSale = showSale;
-        this.verificationType = verificationType;
-        this.verificationDate = verificationDate;
-        this.purchaseLimit = purchaseLimit;
-        this.csContact = csContact;
-        this.csWxcode = csWxcode;
-        this.shareTitle = shareTitle;
-        this.shareInfo = shareInfo;
-        this.shareWapImg = shareWapImg;
-        this.shareMiniImg = shareMiniImg;
-        this.sharePost = sharePost;
-        this.purchasePoints = purchasePoints;
-        this.refundType = refundType;
-        this.appointment = appointment;
-        this.createBy = createBy;
-        this.createTime = createTime;
-        this.delFlag = delFlag;
-    }
 
     public String getCommodityId() {
         return commodityId;
@@ -201,6 +107,14 @@ public class CommodityInfo {
 
     public void setCommodityType(String commodityType) {
         this.commodityType = commodityType;
+    }
+
+    public String getCommodityChannel() {
+        return commodityChannel;
+    }
+
+    public void setCommodityChannel(String commodityChannel) {
+        this.commodityChannel = commodityChannel;
     }
 
     public String getCommodityStatus() {
@@ -233,6 +147,14 @@ public class CommodityInfo {
 
     public void setSaleDate(String saleDate) {
         this.saleDate = saleDate;
+    }
+
+    public Integer getCharityPrice() {
+        return charityPrice;
+    }
+
+    public void setCharityPrice(Integer charityPrice) {
+        this.charityPrice = charityPrice;
     }
 
     public Integer getMarketPrice() {
@@ -387,20 +309,12 @@ public class CommodityInfo {
         this.purchaseLimit = purchaseLimit;
     }
 
-    public String getCsContact() {
-        return csContact;
+    public String getCustomerSupportId() {
+        return customerSupportId;
     }
 
-    public void setCsContact(String csContact) {
-        this.csContact = csContact;
-    }
-
-    public String getCsWxcode() {
-        return csWxcode;
-    }
-
-    public void setCsWxcode(String csWxcode) {
-        this.csWxcode = csWxcode;
+    public void setCustomerSupportId(String customerSupportId) {
+        this.customerSupportId = customerSupportId;
     }
 
     public String getShareTitle() {
@@ -481,6 +395,14 @@ public class CommodityInfo {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public String getDelFlag() {

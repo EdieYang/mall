@@ -32,7 +32,8 @@ public enum ApiResultCode {
     COMMODITY_INVALID_SHARE_TITLE(11015,"商品分享标题不能为空"),
     COMMODITY_INVALID_SHARE_INFO(11016,"商品分享内容不能为空"),
     COMMODITY_INVALID_SHARE_WAP_IMG(11017,"商品WAP分享图片不能为空"),
-    COMMODITY_INVALID_IMG(11018,"商品图片不能为空");
+    COMMODITY_INVALID_IMG(11018,"商品图片不能为空"),
+    COMMODITY_INVALID_ID(11018,"商品ID不能为空");
 
 
 
