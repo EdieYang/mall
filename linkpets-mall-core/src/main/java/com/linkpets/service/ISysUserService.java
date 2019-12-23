@@ -6,17 +6,34 @@ import com.linkpets.responseModel.SysUserInfo;
 
 public interface ISysUserService {
 
+    /**
+     * 根据登录账号获取用户信息
+     *
+     * @param userAcc
+     * @return
+     */
     SysUser getSysUserByUserAccount(String userAcc);
 
+    /**
+     * 创建系统用户
+     *
+     * @param sysUser
+     * @return
+     */
     String crtSysUser(SysUser sysUser);
 
+    /**
+     * 更新系统用户
+     *
+     * @param sysUser
+     */
     void uptSysUser(SysUser sysUser);
 
-    SysUserInfo getShopSysUser(String userId);
+    /**
+     * 删除系统用户
+     *
+     * @param userId
+     */
+    void delSysUser(String userId);
 
-    PageInfo<SysUserInfo> listShopSysUser(String shopId, String search, int pageNum, int pageSize);
-
-    void uptShopSysUser(SysUser sysUser,String shopId);
-
-    void crtShopSysUser(SysUser sysUser,String shopId);
 }

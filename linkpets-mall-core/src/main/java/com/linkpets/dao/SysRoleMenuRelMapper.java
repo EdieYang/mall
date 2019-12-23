@@ -1,0 +1,49 @@
+package com.linkpets.dao;
+
+import com.linkpets.model.SysRoleMenuRel;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+public interface SysRoleMenuRelMapper {
+    @Delete({
+        "delete from sys_role_menu_rel",
+        "where id = #{id,jdbcType=VARCHAR}"
+    })
+    int deleteByPrimaryKey(String id);
+
+    @Insert({
+        "insert into sys_role_menu_rel (id, role_id, ",
+        "menu_id, create_date, ",
+        "del_flag)",
+        "values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, ",
+        "#{menuId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, ",
+        "#{delFlag,jdbcType=VARCHAR})"
+    })
+    int insert(SysRoleMenuRel record);
+
+    int insertSelective(SysRoleMenuRel record);
+
+    @Select({
+        "select",
+        "id, role_id, menu_id, create_date, del_flag",
+        "from sys_role_menu_rel",
+        "where id = #{id,jdbcType=VARCHAR}"
+    })
+    @ResultMap("com.linkpets.dao.SysRoleMenuRelMapper.BaseResultMap")
+    SysRoleMenuRel selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(SysRoleMenuRel record);
+
+    @Update({
+        "update sys_role_menu_rel",
+        "set role_id = #{roleId,jdbcType=VARCHAR},",
+          "menu_id = #{menuId,jdbcType=VARCHAR},",
+          "create_date = #{createDate,jdbcType=TIMESTAMP},",
+          "del_flag = #{delFlag,jdbcType=VARCHAR}",
+        "where id = #{id,jdbcType=VARCHAR}"
+    })
+    int updateByPrimaryKey(SysRoleMenuRel record);
+}

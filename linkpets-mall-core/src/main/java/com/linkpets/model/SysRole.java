@@ -5,9 +5,9 @@ import java.util.Date;
 public class SysRole {
     private String roleId;
 
-    private String roleType;
-
     private String roleName;
+
+    private String roleDescription;
 
     private Date createDate;
 
@@ -21,20 +21,20 @@ public class SysRole {
         this.roleId = roleId;
     }
 
-    public String getRoleType() {
-        return roleType;
-    }
-
-    public void setRoleType(String roleType) {
-        this.roleType = roleType;
-    }
-
     public String getRoleName() {
         return roleName;
     }
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public String getRoleDescription() {
+        return roleDescription;
+    }
+
+    public void setRoleDescription(String roleDescription) {
+        this.roleDescription = roleDescription;
     }
 
     public Date getCreateDate() {

@@ -1,35 +1,29 @@
 package com.linkpets.model;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class SysUser {
     private String userId;
 
-    private String userAcc;
-
-    private String userName;
+    private String userAccount;
 
     private String password;
 
-    private String userStatus;
+    private String userName;
 
     private String userPortrait;
 
     private String roleId;
 
-    private String realName;
+    private String mobilePhone;
+
+    private String email;
+
+    private String isActive;
 
     private String createBy;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-
-    private String updateBy;
-
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
 
     private String delFlag;
 
@@ -41,20 +35,12 @@ public class SysUser {
         this.userId = userId;
     }
 
-    public String getUserAcc() {
-        return userAcc;
+    public String getUserAccount() {
+        return userAccount;
     }
 
-    public void setUserAcc(String userAcc) {
-        this.userAcc = userAcc;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
     }
 
     public String getPassword() {
@@ -65,12 +51,12 @@ public class SysUser {
         this.password = password;
     }
 
-    public String getUserStatus() {
-        return userStatus;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserStatus(String userStatus) {
-        this.userStatus = userStatus;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserPortrait() {
@@ -89,12 +75,28 @@ public class SysUser {
         this.roleId = roleId;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
     }
 
     public String getCreateBy() {
@@ -111,22 +113,6 @@ public class SysUser {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 
     public String getDelFlag() {
