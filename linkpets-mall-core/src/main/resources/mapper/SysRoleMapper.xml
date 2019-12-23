@@ -66,4 +66,15 @@
         </set>
         where role_id = #{roleId,jdbcType=VARCHAR}
     </update>
+    <select id="getSysRoleList" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include>
+        from sys_role
+        where del_flag = 1
+        <if test="roleName!=null and roleName!=''">
+            and role_name like CONCAT('%',#{roleName},'%')
+        </if>
+        <if test="roleDescription!=null and roleDescription!=''">
+            and role_description like CONCAT('%',#{roleDescription},'%')
+        </if>
+    </select>
 </mapper>

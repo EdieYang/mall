@@ -29,8 +29,8 @@ public class SysRoleController {
                                     @RequestParam("roleDescription") String roleDescription,
                                     @RequestParam("pageNum") int pageNum,
                                     @RequestParam("pageSize") int pageSize) {
-        PageInfo<> roleId = sysRoleService.getSysRolePage(roleName, roleDescription, pageNum, pageSize);
-        return ApiResult.valueOf(roleId);
+        PageInfo<SysRole> rolePage = sysRoleService.getSysRolePage(roleName, roleDescription, pageNum, pageSize);
+        return ApiResult.valueOf(rolePage);
     }
 
 

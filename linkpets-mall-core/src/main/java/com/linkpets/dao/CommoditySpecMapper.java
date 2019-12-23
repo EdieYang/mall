@@ -55,4 +55,11 @@ public interface CommoditySpecMapper {
         "where id = #{id,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(CommoditySpec record);
+
+    @Update({
+            "update commodity_spec",
+            "set  del_flag = '0'",
+            "where id = #{specId,jdbcType=VARCHAR}"
+    })
+    void delSpec(String specId);
 }

@@ -2,6 +2,7 @@ package com.linkpets.controller.rbac;
 
 import com.linkpets.model.SysMenu;
 import com.linkpets.model.SysRole;
+import com.linkpets.responseModel.system.SysMenuResp;
 import com.linkpets.result.ApiResult;
 import com.linkpets.service.ISysMenuService;
 import io.swagger.annotations.Api;
@@ -9,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author edie
@@ -20,6 +22,23 @@ public class SysMenuController {
 
     @Resource
     private ISysMenuService sysMenuService;
+
+
+    @ApiOperation("查询菜单列表")
+    @GetMapping("list")
+    public ApiResult getSysMenuList() {
+        List<SysMenuResp> sysMenuRespList = sysMenuService.getSysMenuList();
+        return ApiResult.valueOf(sysMenuRespList);
+    }
+
+
+    @ApiOperation("查询菜单")
+    @GetMapping("")
+    public ApiResult getSysMenuList(@RequestParam("id") String id) {
+        SysMenu sysMenu = sysMenuService.getSusMenuById(id);
+        return ApiResult.valueOf(sysMenu);
+    }
+
 
     @ApiOperation("新增菜单")
     @PostMapping()

@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface SysRoleMapper {
     @Delete({
             "delete from sys_role",
@@ -53,4 +55,7 @@ public interface SysRoleMapper {
             "where role_id = #{roleId,jdbcType=VARCHAR}"
     })
     void delSysRole(String roleId);
+
+
+    List<SysRole> getSysRoleList(String roleName, String roleDescription);
 }

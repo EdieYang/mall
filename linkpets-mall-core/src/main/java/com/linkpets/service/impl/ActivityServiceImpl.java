@@ -19,13 +19,15 @@ import com.linkpets.model.ActivityCommodity;
 import com.linkpets.model.ActivityInfo;
 import com.linkpets.service.IActivityService;
 
+import javax.annotation.Resource;
+
 @Service
 public class ActivityServiceImpl implements IActivityService{
 	
-	@Autowired
+	@Resource
 	ActivityInfoMapper activityInfoMapper;
 	
-	@Autowired
+	@Resource
 	ActivityCommodityMapper activityCommodityMapper;
 
 	@Override

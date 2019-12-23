@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface SysMenuMapper {
     @Delete({
             "delete from sys_menu",
@@ -58,4 +60,18 @@ public interface SysMenuMapper {
             "where id = #{id,jdbcType=VARCHAR}"
     })
     void delSysMenu(String menuId);
+
+
+    @Select({
+            "select",
+            "id, parent_id, title, path, icon, sort, create_date, del_flag",
+            "from sys_menu",
+            "where del_flag = '1'",
+            "order by sort"
+    })
+    @ResultMap("com.linkpets.dao.SysMenuMapper.BaseResultMap")
+    SysMenu getSysMenuList();
+
+
+    List<SysMenu> getSysMenuListByParentId(String parentId);
 }
