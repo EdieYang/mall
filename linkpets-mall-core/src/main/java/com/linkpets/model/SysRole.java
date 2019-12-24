@@ -7,6 +7,8 @@ public class SysRole {
 
     private String roleName;
 
+    private String roleCode;
+
     private String roleDescription;
 
     private Date createDate;
@@ -27,6 +29,14 @@ public class SysRole {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
     public String getRoleDescription() {

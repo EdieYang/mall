@@ -40,7 +40,7 @@
     <result column="refund_type" jdbcType="VARCHAR" property="refundType" />
     <result column="appointment" jdbcType="VARCHAR" property="appointment" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
   </resultMap>
@@ -51,7 +51,7 @@
     commodity_detail, multi_spec, recommended, shop_id, sale_count, browse_count, show_stock, 
     show_sale, verification_type, verification_date, purchase_limit, customer_support_id, 
     share_title, share_info, share_wap_img, share_mini_img, share_post, purchase_points, 
-    refund_type, appointment, create_by, create_time, update_time, del_flag
+    refund_type, appointment, create_by, create_date, update_time, del_flag
   </sql>
   <insert id="insertSelective" parameterType="com.linkpets.model.CommodityInfo">
     insert into commodity_info
@@ -170,8 +170,8 @@
       <if test="createBy != null">
         create_by,
       </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="createDate != null">
+        create_date,
       </if>
       <if test="updateTime != null">
         update_time,
@@ -295,8 +295,8 @@
       <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
@@ -420,8 +420,8 @@
       <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},

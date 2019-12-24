@@ -2,18 +2,53 @@ package com.linkpets.service.impl;
 
 import com.linkpets.dao.SysRouteMapper;
 import com.linkpets.model.SysRoute;
+import com.linkpets.responseModel.system.SysRouteRes;
 import com.linkpets.service.ISysRouteService;
 import com.linkpets.utils.UUIDUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class SysRouteServiceImpl implements ISysRouteService {
 
     @Resource
     private SysRouteMapper sysRouteMapper;
+
+    @Override
+    public List<SysRouteRes> getSysRouteList() {
+        List<SysRoute> sysRouteList = sysRouteMapper.getSysRouteListByParentId("0");
+        List<SysRouteRes> sysRouteResList = new ArrayList<>();
+        sysRouteList.forEach(sysRoute -> {
+            SysRouteRes sysRouteRes = new SysRouteRes(sysRoute);
+            List<SysRoute> sysRouteChildrenList = sysRouteMapper.getSysRouteListByParentId(sysRoute.getId());
+            List<SysRouteRes> sysRouteResChildrenList = new ArrayList<>();
+            sysRouteChildrenList.forEach(sysRouteChildren -> {
+                SysRouteRes sysRouteResChildren = new SysRouteRes(sysRouteChildren);
+                sysRouteResChildrenList.add(sysRouteResChildren);
+            });
+            sysRouteRes.setChildren(sysRouteResChildrenList);
+            sysRouteResList.add(sysRouteRes);
+        });
+        return sysRouteResList;
+    }
+
+    @Override
+    public SysRouteRes getSysRoute(String id) {
+        SysRoute sysRoute = sysRouteMapper.selectByPrimaryKey(id);
+        List<SysRoute> sysRouteList = sysRouteMapper.getSysRouteListByParentId(sysRoute.getId());
+        List<SysRouteRes> sysRouteResList = new ArrayList<>();
+        sysRouteList.forEach(item -> {
+            SysRouteRes sysRouteRes = new SysRouteRes(item);
+            sysRouteResList.add(sysRouteRes);
+        });
+        SysRouteRes sysRouteRes = new SysRouteRes(sysRoute);
+        sysRouteRes.setChildren(sysRouteResList);
+        return sysRouteRes;
+    }
 
     @Override
     public String crtSysRoute(SysRoute sysRoute) {

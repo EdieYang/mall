@@ -40,7 +40,7 @@ public class CommodityServiceImpl implements ICommodityService {
 //
 //    @Override
 //    public PageInfo<CommodityInfoTable> listCommodityInfoTable(String commodityName, String commodityId, String shopId, String commodityPattern, String commodityStatus, String recommended, int pageNum, int pageSize) {
-//        PageHelper.startPage(pageNum, pageSize, "create_time DESC");
+//        PageHelper.startPage(pageNum, pageSize, "create_date DESC");
 //        List<CommodityInfoTable> commodityInfoTables = commodityInfoMapper.listCommodityInfoTable(commodityName, commodityId, shopId, commodityStatus, commodityPattern, recommended);
 //        PageInfo<CommodityInfoTable> commodityInfoTablePageInfo = new PageInfo<>(commodityInfoTables);
 //        return commodityInfoTablePageInfo;
@@ -51,7 +51,7 @@ public class CommodityServiceImpl implements ICommodityService {
     public String crtCommodityInfo(CommodityInfo commodityInfo, List<CommodityImg> commodityImgList, List<CommoditySpec> commoditySpecList,
                                    List<CommodityDistribute> commodityDistributeList, List<CommodityAppointment> commodityAppointmentList) {
         String commodityId = commodityInfo.getCommodityId();
-        commodityInfo.setCreateTime(new Date());
+        commodityInfo.setCreateDate(new Date());
         commodityInfoMapper.insertSelective(commodityInfo);
         commodityImgList.forEach(commodityImg -> {
             commodityImg.setCommodityImgId(UUIDUtils.getId());

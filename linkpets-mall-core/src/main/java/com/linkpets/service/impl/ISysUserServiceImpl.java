@@ -14,12 +14,25 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ISysUserServiceImpl implements ISysUserService {
 
     @Resource
     private SysUserMapper sysUserMapper;
+
+    @Override
+    public PageInfo<SysUser> getSysUserPage(String userAccount, String userName, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<SysUser> sysUserList = sysUserMapper.getSysUserList(userAccount, userName);
+        return new PageInfo<>(sysUserList);
+    }
+
+    @Override
+    public SysUser getSysUser(String userId) {
+        return sysUserMapper.selectByPrimaryKey(userId);
+    }
 
     @Override
     public SysUser getSysUserByUserAccount(String userAcc) {
@@ -29,7 +42,7 @@ public class ISysUserServiceImpl implements ISysUserService {
     @Override
     public String crtSysUser(SysUser sysUser) {
         String userId = UUIDUtils.getId();
-        sysUser.setCreateTime(new Date());
+        sysUser.setCreateDate(new Date());
         sysUser.setUserId(userId);
         sysUserMapper.insertSelective(sysUser);
         return userId;

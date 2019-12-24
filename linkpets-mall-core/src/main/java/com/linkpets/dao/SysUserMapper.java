@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface SysUserMapper {
     @Delete({
             "delete from sys_user",
@@ -17,16 +19,16 @@ public interface SysUserMapper {
     @Insert({
             "insert into sys_user (user_id, user_account, ",
             "password, user_name, ",
-            "user_portrait, role_id, ",
-            "mobile_phone, email, ",
-            "is_active, create_by, ",
-            "create_time, del_flag)",
+            "user_portrait, mobile_phone, ",
+            "email, is_active, ",
+            "create_by, create_date, ",
+            "del_flag)",
             "values (#{userId,jdbcType=VARCHAR}, #{userAccount,jdbcType=VARCHAR}, ",
             "#{password,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, ",
-            "#{userPortrait,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, ",
-            "#{mobilePhone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, ",
-            "#{isActive,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, ",
-            "#{createTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR})"
+            "#{userPortrait,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, ",
+            "#{email,jdbcType=VARCHAR}, #{isActive,jdbcType=VARCHAR}, ",
+            "#{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, ",
+            "#{delFlag,jdbcType=VARCHAR})"
     })
     int insert(SysUser record);
 
@@ -34,8 +36,8 @@ public interface SysUserMapper {
 
     @Select({
             "select",
-            "user_id, user_account, password, user_name, user_portrait, role_id, mobile_phone, ",
-            "email, is_active, create_by, create_time, del_flag",
+            "user_id, user_account, password, user_name, user_portrait, mobile_phone, email, ",
+            "is_active, create_by, create_date, del_flag",
             "from sys_user",
             "where user_id = #{userId,jdbcType=VARCHAR}"
     })
@@ -50,12 +52,11 @@ public interface SysUserMapper {
             "password = #{password,jdbcType=VARCHAR},",
             "user_name = #{userName,jdbcType=VARCHAR},",
             "user_portrait = #{userPortrait,jdbcType=VARCHAR},",
-            "role_id = #{roleId,jdbcType=VARCHAR},",
             "mobile_phone = #{mobilePhone,jdbcType=VARCHAR},",
             "email = #{email,jdbcType=VARCHAR},",
             "is_active = #{isActive,jdbcType=VARCHAR},",
             "create_by = #{createBy,jdbcType=VARCHAR},",
-            "create_time = #{createTime,jdbcType=TIMESTAMP},",
+            "create_date = #{createDate,jdbcType=TIMESTAMP},",
             "del_flag = #{delFlag,jdbcType=VARCHAR}",
             "where user_id = #{userId,jdbcType=VARCHAR}"
     })
@@ -64,7 +65,7 @@ public interface SysUserMapper {
     @Select({
             "select",
             "user_id, user_account, password, user_name, user_portrait, role_id, mobile_phone, ",
-            "email, is_active, create_by, create_time, del_flag",
+            "email, is_active, create_by, create_date, del_flag",
             "from sys_user",
             "where user_account = #{userAccount,jdbcType=VARCHAR}"
     })
@@ -77,4 +78,7 @@ public interface SysUserMapper {
             "where user_id = #{userId,jdbcType=VARCHAR}"
     })
     void delSysUser(String userId);
+
+
+    List<SysUser> getSysUserList(String userAccount, String userName);
 }

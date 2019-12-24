@@ -2,7 +2,7 @@ package com.linkpets.service.impl;
 
 import com.linkpets.dao.SysMenuMapper;
 import com.linkpets.model.SysMenu;
-import com.linkpets.responseModel.system.SysMenuResp;
+import com.linkpets.responseModel.system.SysMenuRes;
 import com.linkpets.service.ISysMenuService;
 import com.linkpets.utils.UUIDUtils;
 import org.springframework.stereotype.Service;
@@ -19,11 +19,11 @@ public class SysMenuServiceImpl implements ISysMenuService {
     private SysMenuMapper sysMenuMapper;
 
     @Override
-    public List<SysMenuResp> getSysMenuList() {
+    public List<SysMenuRes> getSysMenuList() {
         List<SysMenu> sysMenuList = sysMenuMapper.getSysMenuListByParentId("0");
-        List<SysMenuResp> sysMenuRespList = new ArrayList<>();
+        List<SysMenuRes> sysMenuRespList = new ArrayList<>();
         sysMenuList.forEach(sysMenu -> {
-            SysMenuResp sysMenuResp = new SysMenuResp(sysMenu.getId(), sysMenu.getParentId(), sysMenu.getTitle(), sysMenu.getPath(), sysMenu.getIcon(), sysMenu.getSort());
+            SysMenuRes sysMenuResp = new SysMenuRes(sysMenu.getId(), sysMenu.getParentId(), sysMenu.getTitle(), sysMenu.getPath(), sysMenu.getIcon(), sysMenu.getSort());
             List<SysMenu> sysMenuChildrenList = sysMenuMapper.getSysMenuListByParentId(sysMenu.getId());
             sysMenuResp.setChildren(sysMenuChildrenList);
             sysMenuRespList.add(sysMenuResp);

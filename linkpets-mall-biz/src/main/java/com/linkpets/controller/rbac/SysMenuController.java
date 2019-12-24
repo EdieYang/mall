@@ -2,7 +2,7 @@ package com.linkpets.controller.rbac;
 
 import com.linkpets.model.SysMenu;
 import com.linkpets.model.SysRole;
-import com.linkpets.responseModel.system.SysMenuResp;
+import com.linkpets.responseModel.system.SysMenuRes;
 import com.linkpets.result.ApiResult;
 import com.linkpets.service.ISysMenuService;
 import io.swagger.annotations.Api;
@@ -27,7 +27,7 @@ public class SysMenuController {
     @ApiOperation("查询菜单列表")
     @GetMapping("list")
     public ApiResult getSysMenuList() {
-        List<SysMenuResp> sysMenuRespList = sysMenuService.getSysMenuList();
+        List<SysMenuRes> sysMenuRespList = sysMenuService.getSysMenuList();
         return ApiResult.valueOf(sysMenuRespList);
     }
 

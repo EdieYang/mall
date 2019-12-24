@@ -1,13 +1,13 @@
 package com.linkpets.service;
 
 import com.linkpets.model.SysMenu;
-import com.linkpets.responseModel.system.SysMenuResp;
+import com.linkpets.responseModel.system.SysMenuRes;
 
 import java.util.List;
 
 public interface ISysMenuService {
 
-    List<SysMenuResp> getSysMenuList();
+    List<SysMenuRes> getSysMenuList();
 
     SysMenu getSusMenuById(String id);
 

@@ -37,12 +37,12 @@ public interface ActivityInfoMapper {
         "activity_status, shop_id, ",
         "start_time, end_time, ",
         "remark, create_by, ",
-        "create_time, del_flag)",
+        "create_date, del_flag)",
         "values (#{activityId,jdbcType=VARCHAR}, #{activityName,jdbcType=VARCHAR}, ",
         "#{activityStatus,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, ",
         "#{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, ",
         "#{remark,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, ",
-        "#{createTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR})"
+        "#{createDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR})"
     })
     int insert(ActivityInfo record);
 
@@ -63,7 +63,7 @@ public interface ActivityInfoMapper {
     @Select({
         "select",
         "activity_id, activity_name, activity_status, shop_id, start_time, end_time, ",
-        "remark, create_by, create_time, del_flag",
+        "remark, create_by, create_date, del_flag",
         "from activity_info",
         "where activity_id = #{activityId,jdbcType=VARCHAR}"
     })
@@ -93,7 +93,7 @@ public interface ActivityInfoMapper {
           "end_time = #{endTime,jdbcType=TIMESTAMP},",
           "remark = #{remark,jdbcType=VARCHAR},",
           "create_by = #{createBy,jdbcType=VARCHAR},",
-          "create_time = #{createTime,jdbcType=TIMESTAMP},",
+          "create_date = #{createDate,jdbcType=TIMESTAMP},",
           "del_flag = #{delFlag,jdbcType=VARCHAR}",
         "where activity_id = #{activityId,jdbcType=VARCHAR}"
     })
@@ -110,7 +110,7 @@ public interface ActivityInfoMapper {
     	"t_a.start_time AS startTime,",
     	"t_a.end_time AS endTime,",
     	"t_a.remark AS remark,",
-    	"t_a.create_time AS createTime ",
+    	"t_a.create_date AS createDate ",
     	"FROM activity_info t_a ",
     	"LEFT JOIN shop_info t_s ",
     	"ON t_a.shop_id = t_s.shop_id ",

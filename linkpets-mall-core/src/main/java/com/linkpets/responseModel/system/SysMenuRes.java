@@ -9,7 +9,7 @@ import java.util.List;
  * @Author Edie
  */
 @Data
-public class SysMenuResp {
+public class SysMenuRes {
 
     private String id;
 
@@ -25,7 +25,7 @@ public class SysMenuResp {
 
     private List<SysMenu> children;
 
-    public SysMenuResp(String id, String parentId, String title, String path, String icon, Integer sort) {
+    public SysMenuRes(String id, String parentId, String title, String path, String icon, Integer sort) {
         this.id = id;
         this.parentId = parentId;
         this.title = title;

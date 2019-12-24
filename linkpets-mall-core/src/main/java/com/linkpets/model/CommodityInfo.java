@@ -79,7 +79,7 @@ public class CommodityInfo {
 
     private String createBy;
 
-    private Date createTime;
+    private Date createDate;
 
     private Date updateTime;
 
@@ -389,12 +389,12 @@ public class CommodityInfo {
         this.createBy = createBy;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public Date getUpdateTime() {

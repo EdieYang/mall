@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface SysRouteMapper {
     @Delete({
             "delete from sys_route",
@@ -64,4 +66,15 @@ public interface SysRouteMapper {
             "where id = #{id,jdbcType=VARCHAR}"
     })
     void delSysRoute(String routeId);
+
+    @Select({
+            "select",
+            "id, parent_id, title, path, name, component, component_path, cache, sort, create_date, ",
+            "del_flag",
+            "from sys_route",
+            "where parent_id = #{parentId,jdbcType=VARCHAR}",
+            "and del_flag = '1'"
+    })
+    @ResultMap("com.linkpets.dao.SysRouteMapper.BaseResultMap")
+    List<SysRoute> getSysRouteListByParentId(String parentId);
 }

@@ -34,7 +34,7 @@ public interface CommodityInfoMapper {
         "share_mini_img, share_post, ",
         "purchase_points, refund_type, ",
         "appointment, create_by, ",
-        "create_time, update_time, ",
+        "create_date, update_time, ",
         "del_flag)",
         "values (#{commodityId,jdbcType=VARCHAR}, #{commodityName,jdbcType=VARCHAR}, ",
         "#{commodityType,jdbcType=VARCHAR}, #{commodityChannel,jdbcType=CHAR}, ",
@@ -55,7 +55,7 @@ public interface CommodityInfoMapper {
         "#{shareMiniImg,jdbcType=VARCHAR}, #{sharePost,jdbcType=VARCHAR}, ",
         "#{purchasePoints,jdbcType=INTEGER}, #{refundType,jdbcType=VARCHAR}, ",
         "#{appointment,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, ",
-        "#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, ",
+        "#{createDate,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, ",
         "#{delFlag,jdbcType=VARCHAR})"
     })
     int insert(CommodityInfo record);
@@ -70,7 +70,7 @@ public interface CommodityInfoMapper {
         "commodity_detail, multi_spec, recommended, shop_id, sale_count, browse_count, ",
         "show_stock, show_sale, verification_type, verification_date, purchase_limit, ",
         "customer_support_id, share_title, share_info, share_wap_img, share_mini_img, ",
-        "share_post, purchase_points, refund_type, appointment, create_by, create_time, ",
+        "share_post, purchase_points, refund_type, appointment, create_by, create_date, ",
         "update_time, del_flag",
         "from commodity_info",
         "where commodity_id = #{commodityId,jdbcType=VARCHAR}"
@@ -119,7 +119,7 @@ public interface CommodityInfoMapper {
           "refund_type = #{refundType,jdbcType=VARCHAR},",
           "appointment = #{appointment,jdbcType=VARCHAR},",
           "create_by = #{createBy,jdbcType=VARCHAR},",
-          "create_time = #{createTime,jdbcType=TIMESTAMP},",
+          "create_date = #{createDate,jdbcType=TIMESTAMP},",
           "update_time = #{updateTime,jdbcType=TIMESTAMP},",
           "del_flag = #{delFlag,jdbcType=VARCHAR}",
         "where commodity_id = #{commodityId,jdbcType=VARCHAR}"
