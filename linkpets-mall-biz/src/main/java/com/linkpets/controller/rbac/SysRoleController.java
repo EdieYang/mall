@@ -3,8 +3,10 @@ package com.linkpets.controller.rbac;
 
 import com.github.pagehelper.PageInfo;
 import com.linkpets.model.SysRole;
+import com.linkpets.model.SysUser;
 import com.linkpets.responseModel.system.SysRolePermissionRes;
 import com.linkpets.responseModel.system.SysRoleUserRes;
+import com.linkpets.responseModel.system.SysUserRoleRes;
 import com.linkpets.result.ApiResult;
 import com.linkpets.service.ISysRoleService;
 import io.swagger.annotations.Api;
@@ -125,5 +127,16 @@ public class SysRoleController {
         return ApiResult.success();
     }
 
+
+    @ApiOperation("分页根据用户获取角色列表")
+    @GetMapping("userRole/page")
+    public ApiResult getRolePage(@RequestParam(value = "roleName", required = false) String roleName,
+                                 @RequestParam(value = "roleCode", required = false) String roleCode,
+                                 @RequestParam(value = "userId") String userId,
+                                 @RequestParam("pageNum") int pageNum,
+                                 @RequestParam("pageSize") int pageSize) {
+        PageInfo<SysUserRoleRes> userRolePage = sysRoleService.getSysUserRolePage(userId, roleName, roleCode, pageNum, pageSize);
+        return ApiResult.valueOf(userRolePage);
+    }
 
 }

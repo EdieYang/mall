@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.linkpets.model.SysRole;
 import com.linkpets.responseModel.system.SysRolePermissionRes;
 import com.linkpets.responseModel.system.SysRoleUserRes;
+import com.linkpets.responseModel.system.SysUserRoleRes;
 
 public interface ISysRoleService {
 
@@ -63,7 +64,7 @@ public interface ISysRoleService {
     void delSysRole(String roleId);
 
     /**
-     * 创建角色用户
+     * 创建用户角色
      *
      * @param userId
      * @param roleId
@@ -71,7 +72,7 @@ public interface ISysRoleService {
     void crtSysUserRole(String userId, String roleId);
 
     /**
-     * 删除角色用户
+     * 删除用户角色
      *
      * @param userId
      * @param roleId
@@ -105,4 +106,17 @@ public interface ISysRoleService {
      * @param permissionId
      */
     void delSysRolePermission(String roleId, String permissionId);
+
+    /**
+     * 分页根据用户查询角色列表
+     *
+     * @param userId
+     * @param roleName
+     * @param roleCode
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    PageInfo<SysUserRoleRes> getSysUserRolePage(String userId, String roleName, String roleCode, Integer pageNum, Integer pageSize);
+
 }

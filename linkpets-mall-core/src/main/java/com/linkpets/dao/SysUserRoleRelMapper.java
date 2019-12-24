@@ -2,6 +2,7 @@ package com.linkpets.dao;
 
 import com.linkpets.model.SysUserRoleRel;
 import com.linkpets.responseModel.system.SysRoleUserRes;
+import com.linkpets.responseModel.system.SysUserRoleRes;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
@@ -62,4 +63,6 @@ public interface SysUserRoleRelMapper {
     })
     @ResultMap("com.linkpets.dao.SysUserRoleRelMapper.BaseResultMap")
     SysUserRoleRel selectByUserIdAndRoleId(String userId, String roleId);
+
+    List<SysUserRoleRes> getSysUserRolePage(String userId, String roleName, String roleCode);
 }

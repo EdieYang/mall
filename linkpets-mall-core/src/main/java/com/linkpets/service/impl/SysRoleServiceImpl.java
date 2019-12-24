@@ -11,6 +11,7 @@ import com.linkpets.model.SysRolePermissionRel;
 import com.linkpets.model.SysUserRoleRel;
 import com.linkpets.responseModel.system.SysRolePermissionRes;
 import com.linkpets.responseModel.system.SysRoleUserRes;
+import com.linkpets.responseModel.system.SysUserRoleRes;
 import com.linkpets.service.ISysRoleService;
 import com.linkpets.utils.UUIDUtils;
 import org.springframework.stereotype.Service;
@@ -116,6 +117,13 @@ public class SysRoleServiceImpl implements ISysRoleService {
             sysRolePermissionRel.setDelFlag(0);
             sysRolePermissionRelMapper.updateByPrimaryKeySelective(sysRolePermissionRel);
         }
+    }
+
+    @Override
+    public PageInfo<SysUserRoleRes> getSysUserRolePage(String userId, String roleName, String roleCode, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<SysUserRoleRes> sysRoleUserList = sysUserRoleRelMapper.getSysUserRolePage(userId, roleName, roleCode);
+        return new PageInfo<>(sysRoleUserList);
     }
 
 }

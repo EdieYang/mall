@@ -17,6 +17,14 @@
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="is_add" jdbcType="INTEGER" property="isAdd"/>
     </resultMap>
+    <resultMap id="BaseUserRoleMap" type="com.linkpets.responseModel.system.SysUserRoleRes">
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="role_code" jdbcType="VARCHAR" property="roleCode"/>
+        <result column="role_description" jdbcType="VARCHAR" property="roleDescription"/>
+        <result column="is_add" jdbcType="INTEGER" property="isAdd"/>
+    </resultMap>
     <sql id="Base_Column_List">
     id, user_id, role_id, del_flag, create_date
   </sql>
@@ -87,6 +95,21 @@
         </if>
         <if test="userName!=null and userName!=''">
             and u.user_name like CONCAT(#{userName},'%')
+        </if>
+        order by u.create_date desc
+    </select>
+    <select id="getSysUserRolePage" resultMap="BaseUserRoleMap">
+        select r.role_id,r.role_name,r.role_code,r.role_description,rr.user_id,case when rr.user_id is null then
+        0 else 1 end as is_add
+        from sys_role r
+        left join sys_user_role_rel rr
+        on rr.role_id = r.role_id and rr.del_flag = 1 and rr.user_id = #{userId}
+        where r.del_flag = 1
+        <if test="roleName!=null and roleName!=''">
+            and r.role_name like CONCAT(#{roleName},'%')
+        </if>
+        <if test="roleCode!=null and roleCode!=''">
+            and r.role_code like CONCAT(#{roleCode},'%')
         </if>
     </select>
 </mapper>

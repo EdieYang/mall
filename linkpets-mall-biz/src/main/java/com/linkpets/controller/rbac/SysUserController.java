@@ -62,15 +62,5 @@ public class SysUserController {
         return ApiResult.success();
     }
 
-    @ApiOperation("分页根据用户获取角色列表")
-    @GetMapping("role/page")
-    public ApiResult getSysUserPage(@RequestParam(value = "userAccount", required = false) String userAccount,
-                                    @RequestParam(value = "userName", required = false) String userName,
-                                    @RequestParam("pageNum") int pageNum,
-                                    @RequestParam("pageSize") int pageSize) {
-        PageInfo<SysUser> userPage = sysUserService.getSysUserPage(userAccount, userName, pageNum, pageSize);
-        return ApiResult.valueOf(userPage);
-    }
-
 
 }
