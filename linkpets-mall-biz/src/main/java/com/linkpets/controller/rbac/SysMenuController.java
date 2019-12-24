@@ -57,8 +57,8 @@ public class SysMenuController {
 
     @ApiOperation("删除菜单")
     @DeleteMapping()
-    public ApiResult delSysMenu(@RequestParam("menuId") String menuId) {
-        sysMenuService.delSysMenu(menuId);
+    public ApiResult delSysMenu(@RequestParam("id") String id) {
+        sysMenuService.delSysMenu(id);
         return ApiResult.success();
     }
 
