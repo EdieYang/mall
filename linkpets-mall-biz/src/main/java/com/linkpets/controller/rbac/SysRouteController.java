@@ -1,5 +1,6 @@
 package com.linkpets.controller.rbac;
 
+import com.linkpets.annotate.UserLoginToken;
 import com.linkpets.model.SysRoute;
 import com.linkpets.responseModel.system.SysRouteRes;
 import com.linkpets.result.ApiResult;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author edie
  */
 @Api(tags = "系统路由")
+@UserLoginToken
 @RestController
 @RequestMapping("/sys/route")
 public class SysRouteController {

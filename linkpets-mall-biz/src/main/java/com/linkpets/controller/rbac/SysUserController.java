@@ -2,6 +2,7 @@ package com.linkpets.controller.rbac;
 
 
 import com.github.pagehelper.PageInfo;
+import com.linkpets.annotate.UserLoginToken;
 import com.linkpets.model.SysRole;
 import com.linkpets.model.SysUser;
 import com.linkpets.result.ApiResult;
@@ -19,6 +20,7 @@ import java.util.List;
  * @author edie
  */
 @Api(tags = "系统用户")
+@UserLoginToken
 @RestController
 @RequestMapping("/sys/user")
 public class SysUserController {
@@ -69,7 +71,7 @@ public class SysUserController {
     @DeleteMapping("batch")
     public ApiResult batchDelSysUser(@RequestParam("ids") String ids) {
         List<String> userIdList = Arrays.asList(ids.split(","));
-        if(userIdList.size()>0){
+        if (userIdList.size() > 0) {
             sysUserService.batchDelSysUser(userIdList);
         }
         return ApiResult.success();

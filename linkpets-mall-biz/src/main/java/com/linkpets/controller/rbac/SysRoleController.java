@@ -2,6 +2,7 @@ package com.linkpets.controller.rbac;
 
 
 import com.github.pagehelper.PageInfo;
+import com.linkpets.annotate.UserLoginToken;
 import com.linkpets.model.SysRole;
 import com.linkpets.model.SysUser;
 import com.linkpets.responseModel.system.SysRolePermissionRes;
@@ -23,6 +24,7 @@ import java.util.List;
  * @author edie
  */
 @Api(tags = "系统角色")
+@UserLoginToken
 @RestController
 @RequestMapping("/sys/role")
 public class SysRoleController {

@@ -1,5 +1,6 @@
 package com.linkpets.controller.rbac;
 
+import com.linkpets.annotate.UserLoginToken;
 import com.linkpets.model.SysPermission;
 import com.linkpets.model.SysRole;
 import com.linkpets.model.SysUser;
@@ -10,6 +11,7 @@ import com.linkpets.responseModel.system.SysRouteRes;
 import com.linkpets.result.ApiResult;
 import com.linkpets.result.ApiResultCode;
 import com.linkpets.service.*;
+import com.linkpets.utils.TokenUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +42,7 @@ public class SysLoginController {
     @Resource
     private ISysRouteService sysRouteService;
 
-    @ApiOperation("分页获取用户列表")
+    @ApiOperation("用户登录")
     @GetMapping("")
     public ApiResult sysUserLogin(@RequestParam("userAccount") String userAccount,
                                   @RequestParam("password") String password) {
@@ -52,11 +54,19 @@ public class SysLoginController {
         if (!sysUser.getPassword().equals(password)) {
             return ApiResult.errorOf(ApiResultCode.VALID_USER_ACCOUNT_PASSWORD);
         }
+        String token = TokenUtils.getToken(sysUser);
+        SysLoginRes loginRes = new SysLoginRes();
+        loginRes.setUserId(sysUser.getUserId());
+        loginRes.setUserName(sysUser.getUserName());
+        loginRes.setToken(token);
+        return ApiResult.valueOf(loginRes);
+    }
 
-        String userId = sysUser.getUserId();
+    @UserLoginToken
+    @ApiOperation("获取用户权限")
+    @GetMapping("permission")
+    public ApiResult getSysUserPermission(@RequestParam("userId") String userId) {
         SysLoginRes sysLoginRes = new SysLoginRes();
-        sysLoginRes.setUserId(userId);
-        sysLoginRes.setUserName(sysUser.getUserName());
         //查询此用户系统角色
         List<SysRole> sysRoleList = sysRoleService.getSysRoleListByUserId(userId);
         List<String> userRoles = new ArrayList<>();
@@ -79,6 +89,5 @@ public class SysLoginController {
         sysLoginRes.setAccessMenus(sysMenuResList);
         return ApiResult.valueOf(sysLoginRes);
     }
-
 
 }

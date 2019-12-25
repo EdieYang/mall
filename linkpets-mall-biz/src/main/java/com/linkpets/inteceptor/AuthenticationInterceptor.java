@@ -26,7 +26,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
-        String token = httpServletRequest.getHeader("Authorization");// 从 http 请求头中取出 token
+        // 从 http 请求头中取出 token
+        String token = httpServletRequest.getHeader("Authorization");
         // 如果不是映射到方法直接通过
         if (!(object instanceof HandlerMethod)) {
             return true;
@@ -41,8 +42,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             }
         }
         //检查有没有需要用户权限的注解
-        if (method.isAnnotationPresent(UserLoginToken.class)) {
+        if (method.isAnnotationPresent(UserLoginToken.class) || method.getDeclaringClass().isAnnotationPresent(UserLoginToken.class)) {
             UserLoginToken userLoginToken = method.getAnnotation(UserLoginToken.class);
+            if (userLoginToken == null) {
+                userLoginToken = method.getDeclaringClass().getAnnotation(UserLoginToken.class);
+            }
             if (userLoginToken.required()) {
                 // 执行认证
                 if (token == null) {
@@ -53,7 +57,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 try {
                     userId = JWT.decode(token).getAudience().get(0);
                 } catch (JWTDecodeException j) {
-                    throw new RuntimeException(String.valueOf(ApiResultCode.UNAUTHORIZED.getCode()));
+                    throw new RuntimeException(String.valueOf(ApiResultCode.VALID_USER_LOGIN_TOKEN.getCode()));
                 }
                 SysUser user = userService.getSysUserByUserId(userId);
                 if (user == null) {
@@ -64,7 +68,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 try {
                     jwtVerifier.verify(token);
                 } catch (JWTVerificationException e) {
-                    throw new RuntimeException(String.valueOf(ApiResultCode.UNAUTHORIZED.getCode()));
+                    throw new RuntimeException(String.valueOf(ApiResultCode.VALID_USER_LOGIN_TOKEN.getCode()));
                 }
                 return true;
             }
@@ -84,4 +88,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                                 HttpServletResponse httpServletResponse,
                                 Object o, Exception e) throws Exception {
     }
+
+
 }

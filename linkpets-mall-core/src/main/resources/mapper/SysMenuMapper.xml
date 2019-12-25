@@ -108,8 +108,8 @@
         select
         <include refid="Base_Column_List"></include>
         from sys_menu
-        where del_flag = '1'
-        and parent_id in
+        where del_flag = 1
+        and id in
         <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
             #{item}
         </foreach>
@@ -133,6 +133,7 @@
         and r.del_flag = 1
         and u.del_flag = 1
         and u.user_id = #{userId}
+        order by sort
     </select>
 
 </mapper>

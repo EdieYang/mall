@@ -104,6 +104,6 @@
         and p.del_flag = 1
         and pr.del_flag = 1
         and r.del_flag =1
-        and r.use_id =#{userId}
+        and r.user_id =#{userId}
     </select>
 </mapper>

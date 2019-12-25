@@ -20,8 +20,6 @@ public class ExceptionHandlerAdvice {
         exception.printStackTrace();
         log.error(exception.toString());
         switch (exception.getMessage()) {
-            case "401":
-                return ApiResult.errorOf(ApiResultCode.UNAUTHORIZED);
             case "40001":
                 return ApiResult.errorOf(ApiResultCode.VALID_USER_ACCOUNT);
             case "40003":

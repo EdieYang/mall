@@ -1,6 +1,7 @@
 package com.linkpets.controller.rbac;
 
 import com.github.pagehelper.PageInfo;
+import com.linkpets.annotate.UserLoginToken;
 import com.linkpets.model.SysPermission;
 import com.linkpets.result.ApiResult;
 import com.linkpets.service.ISysPermissionService;
@@ -17,6 +18,7 @@ import java.util.List;
  * @Author Edie
  */
 @Api(tags = "系统权限")
+@UserLoginToken
 @RestController
 @RequestMapping("/sys/permission")
 public class SysPermissionController {

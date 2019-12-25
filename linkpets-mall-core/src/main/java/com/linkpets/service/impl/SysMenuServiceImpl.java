@@ -65,7 +65,7 @@ public class SysMenuServiceImpl implements ISysMenuService {
         List<SysMenu> sysMenuList = sysMenuMapper.getSysMenuListByUserId(userId);
         Set<String> parentIdList = new HashSet<>();
         sysMenuList.forEach(sysMenu -> {
-            if ("0".equals(sysMenu.getParentId())) {
+            if (!"0".equals(sysMenu.getParentId())) {
                 parentIdList.add(sysMenu.getParentId());
             }
         });

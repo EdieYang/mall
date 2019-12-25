@@ -64,7 +64,7 @@ public interface SysUserMapper {
 
     @Select({
             "select",
-            "user_id, user_account, password, user_name, user_portrait, role_id, mobile_phone, ",
+            "user_id, user_account, password, user_name, user_portrait, mobile_phone, ",
             "email, is_active, create_by, create_date, del_flag",
             "from sys_user",
             "where user_account = #{userAccount,jdbcType=VARCHAR}"

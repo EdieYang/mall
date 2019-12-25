@@ -1,5 +1,6 @@
 package com.linkpets.controller.rbac;
 
+import com.linkpets.annotate.UserLoginToken;
 import com.linkpets.model.SysMenu;
 import com.linkpets.model.SysRole;
 import com.linkpets.responseModel.system.SysMenuRes;
@@ -16,6 +17,7 @@ import java.util.List;
  * @author edie
  */
 @Api(tags = "系统菜单")
+@UserLoginToken
 @RestController
 @RequestMapping("/sys/menu")
 public class SysMenuController {

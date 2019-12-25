@@ -73,7 +73,8 @@ public interface SysRouteMapper {
             "del_flag",
             "from sys_route",
             "where parent_id = #{parentId,jdbcType=VARCHAR}",
-            "and del_flag = '1'"
+            "and del_flag = '1'",
+            "order by sort"
     })
     @ResultMap("com.linkpets.dao.SysRouteMapper.BaseResultMap")
     List<SysRoute> getSysRouteListByParentId(String parentId);
