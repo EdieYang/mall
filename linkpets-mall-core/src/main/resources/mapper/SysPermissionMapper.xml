@@ -79,8 +79,7 @@
     <update id="batchDelSysPermission">
         update sys_permission set del_flag = 0
         where id in
-        <foreach collection="list" index="index" item="item"
-                 separator="," open="(" close=")">
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
             #{item}
         </foreach>
     </update>
@@ -96,5 +95,15 @@
             and permission_code like CONCAT(#{permissionCode},'%')
         </if>
         order by permission_code DESC
+    </select>
+    <select id="getSysPermissionListByUserId" resultMap="BaseResultMap">
+        select p.id, p.permission_name, p.permission_code, p.permission_description
+        from sys_permission p , sys_role_permission_rel pr ,sys_user_role_rel r
+        where p.id = pr.permission_id
+        and r.role_id = pr.role_id
+        and p.del_flag = 1
+        and pr.del_flag = 1
+        and r.del_flag =1
+        and r.use_id =#{userId}
     </select>
 </mapper>

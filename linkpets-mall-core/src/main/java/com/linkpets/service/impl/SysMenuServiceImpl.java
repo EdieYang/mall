@@ -8,9 +8,7 @@ import com.linkpets.utils.UUIDUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class SysMenuServiceImpl implements ISysMenuService {
@@ -59,5 +57,30 @@ public class SysMenuServiceImpl implements ISysMenuService {
     public List<SysMenu> getSysRoleMenuList(String roleId) {
         List<SysMenu> sysMenuList = sysMenuMapper.getSysRoleMenuList(roleId);
         return sysMenuList;
+    }
+
+    @Override
+    public List<SysMenuRes> getSysMenuListByUserId(String userId) {
+        List<SysMenuRes> sysMenuResList = new ArrayList<>();
+        List<SysMenu> sysMenuList = sysMenuMapper.getSysMenuListByUserId(userId);
+        Set<String> parentIdList = new HashSet<>();
+        sysMenuList.forEach(sysMenu -> {
+            if ("0".equals(sysMenu.getParentId())) {
+                parentIdList.add(sysMenu.getParentId());
+            }
+        });
+        List<SysMenu> parentMenuList = sysMenuMapper.getSysMenuListByParentIds(new ArrayList<>(parentIdList));
+        parentMenuList.forEach(sysMenu -> {
+            SysMenuRes sysMenuRes = new SysMenuRes(sysMenu);
+            List<SysMenu> childrenList = new ArrayList<>();
+            sysMenuList.forEach(childMenu -> {
+                if (childMenu.getParentId().equals(sysMenu.getId())) {
+                    childrenList.add(childMenu);
+                }
+            });
+            sysMenuRes.setChildren(childrenList);
+            sysMenuResList.add(sysMenuRes);
+        });
+        return sysMenuResList;
     }
 }

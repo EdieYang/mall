@@ -33,4 +33,13 @@ public class SysMenuRes {
         this.icon = icon;
         this.sort = sort;
     }
+
+    public SysMenuRes(SysMenu sysMenu) {
+        this.id = sysMenu.getId();
+        this.parentId = sysMenu.getParentId();
+        this.title = sysMenu.getTitle();
+        this.path = sysMenu.getPath();
+        this.icon = sysMenu.getIcon();
+        this.sort = sysMenu.getSort();
+    }
 }

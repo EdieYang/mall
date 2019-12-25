@@ -63,4 +63,8 @@ public interface SysRoleMapper {
 
 
     List<SysRole> getSysRoleList(String roleName, String roleCode);
+
+
+    List<SysRole> getSysRoleListByUserId(String userId);
+
 }

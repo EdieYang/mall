@@ -104,6 +104,17 @@
         and del_flag = '1'
         order by sort
     </select>
+    <select id="getSysMenuListByParentIds" resultType="com.linkpets.model.SysMenu">
+        select
+        <include refid="Base_Column_List"></include>
+        from sys_menu
+        where del_flag = '1'
+        and parent_id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+        order by sort
+    </select>
     <select id="getSysRoleMenuList" resultType="com.linkpets.model.SysMenu">
         select
         m.id, m.parent_id, m.title, m.path, m.icon, m.sort
@@ -113,4 +124,15 @@
         and r.del_flag = 1
         and r.role_id =#{roleId}
     </select>
+    <select id="getSysMenuListByUserId" resultMap="BaseResultMap">
+        select m.id, m.parent_id, m.title, m.path, m.icon, m.sort
+        from sys_menu m,sys_role_menu_rel r,sys_user_role_rel u
+        where m.id = r.menu_id
+        and r.role_id = u.role_id
+        and m.del_flag = 1
+        and r.del_flag = 1
+        and u.del_flag = 1
+        and u.user_id = #{userId}
+    </select>
+
 </mapper>

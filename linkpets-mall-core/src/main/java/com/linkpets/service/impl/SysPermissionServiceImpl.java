@@ -56,4 +56,9 @@ public class SysPermissionServiceImpl implements ISysPermissionService {
     public void batchDelSysPermission(List<String> idList) {
         sysPermissionMapper.batchDelSysPermission(idList);
     }
+
+    @Override
+    public List<SysPermission> getSysPermissionListByUserId(String userId) {
+        return sysPermissionMapper.getSysPermissionListByUserId(userId);
+    }
 }

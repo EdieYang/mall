@@ -53,7 +53,7 @@ public class ApiResult {
     }
 
 
-    public static ApiResult success(){
+    public static ApiResult success() {
         return new ApiResult(ApiResultCode.SUCCESS.getCode(), ApiResultCode.SUCCESS.getMsg(), "");
     }
 
@@ -67,6 +67,10 @@ public class ApiResult {
     }
 
     public static ApiResult errorOf(ApiResultCode jsonParseError) {
-        return new ApiResult(jsonParseError.getCode(), jsonParseError.getMsg(),null);
+        return new ApiResult(jsonParseError.getCode(), jsonParseError.getMsg(), null);
+    }
+
+    public static ApiResult errorOf(String message) {
+        return new ApiResult(500, message, null);
     }
 }

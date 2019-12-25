@@ -1,7 +1,6 @@
 package com.linkpets.responseModel.system;
 
 import com.linkpets.model.SysRoute;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 
 import java.util.List;
@@ -11,13 +10,11 @@ import java.util.Map;
  * @Author Edie
  */
 @Data
-public class SysRouteRes {
+public class SysLoginRouteRes {
 
     private String id;
 
     private String parentId;
-
-    private String title;
 
     private String path;
 
@@ -27,36 +24,32 @@ public class SysRouteRes {
 
     private String componentPath;
 
-    private Boolean cache;
+    private Map<String, Object> meta;
 
     private Integer sort;
 
-    private List<SysRouteRes> children;
+    private List<SysLoginRouteRes> children;
 
-    public SysRouteRes() {
+    public SysLoginRouteRes() {
     }
 
-    public SysRouteRes(String id, String parentId, String title, String path, String name, String component, String componentPath, int cache, Integer sort) {
+    public SysLoginRouteRes(String id, String parentId, String path, String name, String component, String componentPath, Integer sort) {
         this.id = id;
         this.parentId = parentId;
-        this.title = title;
         this.path = path;
         this.name = name;
         this.component = component;
         this.componentPath = componentPath;
-        this.cache = cache == 1 ? true : false;
         this.sort = sort;
     }
 
-    public SysRouteRes(SysRoute sysRoute) {
+    public SysLoginRouteRes(SysRoute sysRoute) {
         this.id = sysRoute.getId();
         this.parentId = sysRoute.getParentId();
-        this.title = sysRoute.getTitle();
         this.path = sysRoute.getPath();
         this.name = sysRoute.getName();
         this.component = sysRoute.getComponent();
         this.componentPath = sysRoute.getComponentPath();
-        this.cache = sysRoute.getCache() == 1 ? true : false;
         this.sort = sysRoute.getSort();
     }
 }

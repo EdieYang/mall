@@ -60,4 +60,6 @@ public interface SysPermissionMapper {
     void delSysPermission(String id);
 
     void batchDelSysPermission(List<String> idList);
+
+    List<SysPermission> getSysPermissionListByUserId(String userId);
 }

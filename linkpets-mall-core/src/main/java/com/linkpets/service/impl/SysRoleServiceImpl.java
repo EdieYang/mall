@@ -159,4 +159,9 @@ public class SysRoleServiceImpl implements ISysRoleService {
         }
     }
 
+    @Override
+    public List<SysRole> getSysRoleListByUserId(String userId) {
+        return sysRoleMapper.getSysRoleListByUserId(userId);
+    }
+
 }

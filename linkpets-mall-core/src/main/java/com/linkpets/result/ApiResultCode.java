@@ -5,7 +5,7 @@ public enum ApiResultCode {
 
 	SUCCESS(200,"成功"), // 成功
 	FAIL(400,"失败"), // 失败
-	UNAUTHORIZED(401,"未认证"), // 未认证（签名错误）
+	UNAUTHORIZED(401,"授权错误"), // 未认证（签名错误）
 	NOT_FOUND(404,"接口不存在"), // 接口不存在
 	INTERNAL_SERVER_ERROR(500,"服务器内部错误"),// 服务器内部错误
 	JSON_PARSE_ERROR(10001,"Json解析错误"),
@@ -13,6 +13,7 @@ public enum ApiResultCode {
     VERSION_ERROR(30001,"版本不一致"),
 	VALID_USER_ACCOUNT(40001,"账户不存在"),
     VALID_USER_ACCOUNT_PASSWORD(40002,"密码错误"),
+    VALID_USER_LOGIN_TOKEN(40003,"TOKNE失效，请重新登录"),
 
 	COMMODITY_INVALID_NAME(11000,"商品名称不能为空"),
     COMMODITY_INVALID_TYPE(11001,"商品类型不能为空"),

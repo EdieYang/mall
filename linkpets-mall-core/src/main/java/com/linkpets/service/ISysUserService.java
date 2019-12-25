@@ -36,6 +36,13 @@ public interface ISysUserService {
     SysUser getSysUserByUserAccount(String userAcc);
 
     /**
+     * 根据userId查询用户
+     * @param userId
+     * @return
+     */
+    SysUser getSysUserByUserId(String userId);
+
+    /**
      * 创建系统用户
      *
      * @param sysUser

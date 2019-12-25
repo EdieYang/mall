@@ -1,5 +1,6 @@
 package com.linkpets.dao;
 
+import com.linkpets.model.SysRole;
 import com.linkpets.model.SysUserRoleRel;
 import com.linkpets.responseModel.system.SysRoleUserRes;
 import com.linkpets.responseModel.system.SysUserRoleRes;
@@ -65,4 +66,5 @@ public interface SysUserRoleRelMapper {
     SysUserRoleRel selectByUserIdAndRoleId(String userId, String roleId);
 
     List<SysUserRoleRes> getSysUserRolePage(String userId, String roleName, String roleCode);
+
 }

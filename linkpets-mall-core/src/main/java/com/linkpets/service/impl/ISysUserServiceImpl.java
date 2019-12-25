@@ -40,6 +40,11 @@ public class ISysUserServiceImpl implements ISysUserService {
     }
 
     @Override
+    public SysUser getSysUserByUserId(String userId) {
+        return sysUserMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
     public String crtSysUser(SysUser sysUser) {
         String userId = UUIDUtils.getId();
         sysUser.setCreateDate(new Date());

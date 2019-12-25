@@ -136,4 +136,11 @@ public interface ISysRoleService {
      */
     void crtSysRoleMenus(String roleId, String menus);
 
+    /**
+     * 根据userId获取系统角色列表
+     * @param userId
+     * @return
+     */
+    List<SysRole> getSysRoleListByUserId(String userId);
+
 }

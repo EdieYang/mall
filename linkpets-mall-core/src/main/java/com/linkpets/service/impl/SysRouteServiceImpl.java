@@ -2,15 +2,14 @@ package com.linkpets.service.impl;
 
 import com.linkpets.dao.SysRouteMapper;
 import com.linkpets.model.SysRoute;
+import com.linkpets.responseModel.system.SysLoginRouteRes;
 import com.linkpets.responseModel.system.SysRouteRes;
 import com.linkpets.service.ISysRouteService;
 import com.linkpets.utils.UUIDUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class SysRouteServiceImpl implements ISysRouteService {
@@ -28,6 +27,28 @@ public class SysRouteServiceImpl implements ISysRouteService {
             List<SysRouteRes> sysRouteResChildrenList = new ArrayList<>();
             sysRouteChildrenList.forEach(sysRouteChildren -> {
                 SysRouteRes sysRouteResChildren = new SysRouteRes(sysRouteChildren);
+                sysRouteResChildrenList.add(sysRouteResChildren);
+            });
+            sysRouteRes.setChildren(sysRouteResChildrenList);
+            sysRouteResList.add(sysRouteRes);
+        });
+        return sysRouteResList;
+    }
+
+    @Override
+    public List<SysLoginRouteRes> getSysLoginRouteList() {
+        List<SysRoute> sysRouteList = sysRouteMapper.getSysRouteListByParentId("0");
+        List<SysLoginRouteRes> sysRouteResList = new ArrayList<>();
+        sysRouteList.forEach(sysRoute -> {
+            SysLoginRouteRes sysRouteRes = new SysLoginRouteRes(sysRoute);
+            List<SysRoute> sysRouteChildrenList = sysRouteMapper.getSysRouteListByParentId(sysRoute.getId());
+            List<SysLoginRouteRes> sysRouteResChildrenList = new ArrayList<>();
+            sysRouteChildrenList.forEach(sysRouteChildren -> {
+                SysLoginRouteRes sysRouteResChildren = new SysLoginRouteRes(sysRouteChildren);
+                Map<String, Object> meta = new HashMap<>();
+                meta.put("title", sysRouteChildren.getTitle());
+                meta.put("cache", sysRouteChildren.getCache() == 1 ? true : false);
+                sysRouteResChildren.setMeta(meta);
                 sysRouteResChildrenList.add(sysRouteResChildren);
             });
             sysRouteRes.setChildren(sysRouteResChildrenList);

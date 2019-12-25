@@ -52,7 +52,15 @@ public interface ISysPermissionService {
 
     /**
      * 批量删除系统权限
+     *
      * @param idList
      */
     void batchDelSysPermission(List<String> idList);
+
+    /**
+     * 根据userId查询系统权限列表
+     * @param userId
+     * @return
+     */
+    List<SysPermission> getSysPermissionListByUserId(String userId);
 }

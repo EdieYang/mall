@@ -96,5 +96,14 @@
             and role_code like CONCAT('%',#{roleCode},'%')
         </if>
     </select>
+    <select id="getSysRoleListByUserId" resultMap="BaseResultMap">
+        select ro.role_id, ro.role_name, ro.role_code, ro.role_descriptionrole
+        from sys_role ro , sys_user_role_rel r
+        where ro.del_flag = 1
+        and r.del_flag = 1
+        and ro.role_id = r.role_id
+        and r.user_id =#{userId}
+        order by ro.create_date desc
+    </select>
 
 </mapper>
