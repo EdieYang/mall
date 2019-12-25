@@ -8,9 +8,12 @@ import com.linkpets.result.ApiResult;
 import com.linkpets.service.ISysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author edie
@@ -62,5 +65,14 @@ public class SysUserController {
         return ApiResult.success();
     }
 
+    @ApiOperation("批量删除用户")
+    @DeleteMapping("batch")
+    public ApiResult batchDelSysUser(@RequestParam("ids") String ids) {
+        List<String> userIdList = Arrays.asList(ids.split(","));
+        if(userIdList.size()>0){
+            sysUserService.batchDelSysUser(userIdList);
+        }
+        return ApiResult.success();
+    }
 
 }

@@ -4,9 +4,11 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.linkpets.dao.SysRoleMapper;
+import com.linkpets.dao.SysRoleMenuRelMapper;
 import com.linkpets.dao.SysRolePermissionRelMapper;
 import com.linkpets.dao.SysUserRoleRelMapper;
 import com.linkpets.model.SysRole;
+import com.linkpets.model.SysRoleMenuRel;
 import com.linkpets.model.SysRolePermissionRel;
 import com.linkpets.model.SysUserRoleRel;
 import com.linkpets.responseModel.system.SysRolePermissionRes;
@@ -14,9 +16,13 @@ import com.linkpets.responseModel.system.SysRoleUserRes;
 import com.linkpets.responseModel.system.SysUserRoleRes;
 import com.linkpets.service.ISysRoleService;
 import com.linkpets.utils.UUIDUtils;
+import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +35,8 @@ public class SysRoleServiceImpl implements ISysRoleService {
     private SysUserRoleRelMapper sysUserRoleRelMapper;
     @Resource
     private SysRolePermissionRelMapper sysRolePermissionRelMapper;
+    @Resource
+    private SysRoleMenuRelMapper sysRoleMenuRelMapper;
 
     @Override
     public PageInfo<SysRole> getSysRolePage(String roleName, String roleCode, Integer pageNum, Integer pageSize) {
@@ -66,6 +74,11 @@ public class SysRoleServiceImpl implements ISysRoleService {
     @Override
     public void delSysRole(String roleId) {
         sysRoleMapper.delSysRole(roleId);
+    }
+
+    @Override
+    public void batchDelSysRole(List<String> roleIdList) {
+        sysRoleMapper.batchDelSysRole(roleIdList);
     }
 
     @Override
@@ -124,6 +137,26 @@ public class SysRoleServiceImpl implements ISysRoleService {
         PageHelper.startPage(pageNum, pageSize);
         List<SysUserRoleRes> sysRoleUserList = sysUserRoleRelMapper.getSysUserRolePage(userId, roleName, roleCode);
         return new PageInfo<>(sysRoleUserList);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void crtSysRoleMenus(String roleId, String menus) {
+        //清除原有菜单
+        sysRoleMenuRelMapper.delAllMenusByRoleId(roleId);
+        if (StringUtils.isNotEmpty(menus)) {
+            List<String> menuList = Arrays.asList(menus.split(","));
+            List<SysRoleMenuRel> roleMenuRelList = new ArrayList<>();
+            menuList.forEach(menuId -> {
+                SysRoleMenuRel roleMenuRel = new SysRoleMenuRel();
+                roleMenuRel.setId(UUIDUtils.getId());
+                roleMenuRel.setRoleId(roleId);
+                roleMenuRel.setMenuId(menuId);
+                roleMenuRel.setCreateDate(new Date());
+                roleMenuRelList.add(roleMenuRel);
+            });
+            sysRoleMenuRelMapper.insertBatch(roleMenuRelList);
+        }
     }
 
 }

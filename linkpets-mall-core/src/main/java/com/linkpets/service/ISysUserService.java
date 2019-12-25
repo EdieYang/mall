@@ -4,6 +4,8 @@ import com.github.pagehelper.PageInfo;
 import com.linkpets.model.SysUser;
 import com.linkpets.responseModel.SysUserInfo;
 
+import java.util.List;
+
 public interface ISysUserService {
 
     /**
@@ -55,4 +57,10 @@ public interface ISysUserService {
      */
     void delSysUser(String userId);
 
+    /**
+     * 批量删除系统用户
+     *
+     * @param userIdList
+     */
+    void batchDelSysUser(List<String> userIdList);
 }

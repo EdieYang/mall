@@ -6,6 +6,8 @@ import com.linkpets.responseModel.system.SysRolePermissionRes;
 import com.linkpets.responseModel.system.SysRoleUserRes;
 import com.linkpets.responseModel.system.SysUserRoleRes;
 
+import java.util.List;
+
 public interface ISysRoleService {
 
     /**
@@ -64,6 +66,13 @@ public interface ISysRoleService {
     void delSysRole(String roleId);
 
     /**
+     * 批量删除角色
+     *
+     * @param roleIdList
+     */
+    void batchDelSysRole(List<String> roleIdList);
+
+    /**
      * 创建用户角色
      *
      * @param userId
@@ -118,5 +127,13 @@ public interface ISysRoleService {
      * @return
      */
     PageInfo<SysUserRoleRes> getSysUserRolePage(String userId, String roleName, String roleCode, Integer pageNum, Integer pageSize);
+
+    /**
+     * 新增角色菜单
+     *
+     * @param roleId
+     * @param menus
+     */
+    void crtSysRoleMenus(String roleId, String menus);
 
 }

@@ -62,5 +62,11 @@ public class SysMenuController {
         return ApiResult.success();
     }
 
+    @ApiOperation("根据角色查询菜单列表")
+    @GetMapping("role")
+    public ApiResult getSysRoleMenuList(@RequestParam("roleId") String roleId) {
+        List<SysMenu> sysMenuList = sysMenuService.getSysRoleMenuList(roleId);
+        return ApiResult.valueOf(sysMenuList);
+    }
 
 }

@@ -79,6 +79,7 @@ public interface SysUserMapper {
     })
     void delSysUser(String userId);
 
+    void batchDelSysUser(List<String> userIds);
 
     List<SysUser> getSysUserList(String userAccount, String userName);
 }

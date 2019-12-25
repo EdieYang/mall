@@ -76,6 +76,14 @@
         </set>
         where role_id = #{roleId,jdbcType=VARCHAR}
     </update>
+    <update id="batchDelSysRole">
+        update sys_role set del_flag = 0
+        where role_id in
+        <foreach collection="list" index="index" item="item"
+                 separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </update>
     <select id="getSysRoleList" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

@@ -58,4 +58,6 @@ public interface SysPermissionMapper {
             "where id = #{id,jdbcType=VARCHAR}"
     })
     void delSysPermission(String id);
+
+    void batchDelSysPermission(List<String> idList);
 }

@@ -3,6 +3,8 @@ package com.linkpets.service;
 import com.github.pagehelper.PageInfo;
 import com.linkpets.model.SysPermission;
 
+import java.util.List;
+
 /**
  * @Author Edie
  */
@@ -22,6 +24,7 @@ public interface ISysPermissionService {
 
     /**
      * 查询系统权限信息
+     *
      * @param id
      * @return
      */
@@ -29,6 +32,7 @@ public interface ISysPermissionService {
 
     /**
      * 新增系统权限
+     *
      * @param sysPermission
      * @return
      */
@@ -41,7 +45,14 @@ public interface ISysPermissionService {
 
     /**
      * 删除系统权限
+     *
      * @param id
      */
     void delSysPermission(String id);
+
+    /**
+     * 批量删除系统权限
+     * @param idList
+     */
+    void batchDelSysPermission(List<String> idList);
 }

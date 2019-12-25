@@ -104,4 +104,13 @@
         and del_flag = '1'
         order by sort
     </select>
+    <select id="getSysRoleMenuList" resultType="com.linkpets.model.SysMenu">
+        select
+        m.id, m.parent_id, m.title, m.path, m.icon, m.sort
+        from sys_menu m,sys_role_menu_rel r
+        where m.id = r.menu_id
+        and m.del_flag = 1
+        and r.del_flag = 1
+        and r.role_id =#{roleId}
+    </select>
 </mapper>

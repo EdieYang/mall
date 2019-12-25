@@ -54,4 +54,10 @@ public class SysMenuServiceImpl implements ISysMenuService {
     public void delSysMenu(String menuId) {
         sysMenuMapper.delSysMenu(menuId);
     }
+
+    @Override
+    public List<SysMenu> getSysRoleMenuList(String roleId) {
+        List<SysMenu> sysMenuList = sysMenuMapper.getSysRoleMenuList(roleId);
+        return sysMenuList;
+    }
 }

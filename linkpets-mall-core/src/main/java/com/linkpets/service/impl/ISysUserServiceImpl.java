@@ -58,5 +58,10 @@ public class ISysUserServiceImpl implements ISysUserService {
         sysUserMapper.delSysUser(userId);
     }
 
+    @Override
+    public void batchDelSysUser(List<String> userIdList) {
+        sysUserMapper.batchDelSysUser(userIdList);
+    }
+
 
 }

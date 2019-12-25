@@ -11,9 +11,12 @@ import com.linkpets.result.ApiResult;
 import com.linkpets.service.ISysRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -65,6 +68,16 @@ public class SysRoleController {
     @DeleteMapping()
     public ApiResult delSysRole(@RequestParam("id") String id) {
         sysRoleService.delSysRole(id);
+        return ApiResult.success();
+    }
+
+    @ApiOperation("批量删除角色")
+    @DeleteMapping("batch")
+    public ApiResult batchDelSysRole(@RequestParam("ids") String ids) {
+        List<String> roleIdList = Arrays.asList(ids.split(","));
+        if (roleIdList.size() > 0) {
+            sysRoleService.batchDelSysRole(roleIdList);
+        }
         return ApiResult.success();
     }
 
@@ -137,6 +150,14 @@ public class SysRoleController {
                                  @RequestParam("pageSize") int pageSize) {
         PageInfo<SysUserRoleRes> userRolePage = sysRoleService.getSysUserRolePage(userId, roleName, roleCode, pageNum, pageSize);
         return ApiResult.valueOf(userRolePage);
+    }
+
+    @ApiOperation("新增角色菜单")
+    @PostMapping("menu")
+    public ApiResult crtSysRoleMenus(@RequestParam("menus") String menus,
+                                     @RequestParam("roleId") String roleId) {
+        sysRoleService.crtSysRoleMenus(roleId, menus);
+        return ApiResult.success();
     }
 
 }

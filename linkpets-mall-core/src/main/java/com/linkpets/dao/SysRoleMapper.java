@@ -59,5 +59,8 @@ public interface SysRoleMapper {
     void delSysRole(String roleId);
 
 
+    void batchDelSysRole(List<String> roleIdList);
+
+
     List<SysRole> getSysRoleList(String roleName, String roleCode);
 }

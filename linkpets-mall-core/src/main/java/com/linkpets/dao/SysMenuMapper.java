@@ -74,4 +74,6 @@ public interface SysMenuMapper {
 
 
     List<SysMenu> getSysMenuListByParentId(String parentId);
+
+    List<SysMenu> getSysRoleMenuList(String roleId);
 }

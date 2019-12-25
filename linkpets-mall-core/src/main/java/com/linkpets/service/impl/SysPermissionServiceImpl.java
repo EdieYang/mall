@@ -23,8 +23,8 @@ public class SysPermissionServiceImpl implements ISysPermissionService {
 
     @Override
     public PageInfo<SysPermission> getSysPermissionPage(String permissionName, String permissionCode, Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        List<SysPermission> sysPermissionList=sysPermissionMapper.getSysPermissionList(permissionName,permissionCode);
+        PageHelper.startPage(pageNum, pageSize);
+        List<SysPermission> sysPermissionList = sysPermissionMapper.getSysPermissionList(permissionName, permissionCode);
         return new PageInfo<>(sysPermissionList);
     }
 
@@ -35,7 +35,7 @@ public class SysPermissionServiceImpl implements ISysPermissionService {
 
     @Override
     public String crtSysPermission(SysPermission sysPermission) {
-        String id= UUIDUtils.getId();
+        String id = UUIDUtils.getId();
         sysPermission.setId(id);
         sysPermission.setCreateDate(new Date());
         sysPermissionMapper.insertSelective(sysPermission);
@@ -50,5 +50,10 @@ public class SysPermissionServiceImpl implements ISysPermissionService {
     @Override
     public void delSysPermission(String id) {
         sysPermissionMapper.delSysPermission(id);
+    }
+
+    @Override
+    public void batchDelSysPermission(List<String> idList) {
+        sysPermissionMapper.batchDelSysPermission(idList);
     }
 }

@@ -17,4 +17,11 @@ public interface ISysMenuService {
 
     void delSysMenu(String menuId);
 
+    /**
+     * 查询角色菜单列表
+     * @param roleId
+     * @return
+     */
+    List<SysMenu> getSysRoleMenuList(String roleId);
+
 }
