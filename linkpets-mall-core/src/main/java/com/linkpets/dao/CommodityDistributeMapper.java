@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface CommodityDistributeMapper {
     @Delete({
             "delete from commodity_distribute",
@@ -54,4 +56,14 @@ public interface CommodityDistributeMapper {
             "where commodity_id = #{commodityId,jdbcType=VARCHAR}"
     })
     void delDistribute(String commodityId);
+
+    @Select({
+            "select",
+            "id, commodity_id, grade, commission, del_flag, create_date",
+            "from commodity_distribute",
+            "where commodity_id = #{commodityId,jdbcType=VARCHAR}",
+            "and del_flag = '1'"
+    })
+    @ResultMap("com.linkpets.dao.CommodityDistributeMapper.BaseResultMap")
+    List<CommodityDistribute> getCommodityDistributeList(String commodityId);
 }

@@ -5,12 +5,14 @@ import com.linkpets.entity.CommodityInfoReq;
 import com.linkpets.mallEnum.SerialNumberEnum;
 import com.linkpets.model.CommodityImg;
 import com.linkpets.model.CommodityInfo;
-import com.linkpets.responseModel.commodity.CommodityInfoTable;
-import com.linkpets.service.ICommodityService;
+import com.linkpets.responseModel.commodity.CommodityInfoRes;
+import com.linkpets.responseModel.commodity.CommodityPage;
 import com.linkpets.result.ApiResult;
 import com.linkpets.result.ApiResultCode;
+import com.linkpets.service.ICommodityService;
 import com.linkpets.utils.CommonUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,17 +32,26 @@ public class CommodityController {
         return ApiResult.valueOf(CommonUtil.getSerialNumberByPrefix(SerialNumberEnum.COMMODITY_PREFIX));
     }
 
-//    @GetMapping("list")
-//    public PageInfo<CommodityInfoTable> listCommodityInfoTable(@RequestParam(value = "commodityName", required = false) String commodityName,
-//                                                               @RequestParam(value = "commodityId", required = false) String commodityId,
-//                                                               @RequestParam(value = "shopId", required = false) String shopId,
-//                                                               @RequestParam(value = "commodityPattern", required = false) String commodityPattern,
-//                                                               @RequestParam(value = "commodityStatus", required = false) String commodityStatus,
-//                                                               @RequestParam(value = "recommended", required = false) String recommended,
-//                                                               @RequestParam(value = "pageNum") int pageNum,
-//                                                               @RequestParam(value = "pageSize") int pageSize) {
-//        return commodityService.listCommodityInfoTable(commodityName, commodityId, shopId, commodityPattern, commodityStatus, recommended, pageNum, pageSize);
-//    }
+    @ApiOperation("分页查询商品列表")
+    @GetMapping("page")
+    public PageInfo<CommodityPage> getCommodityInfoPage(@RequestParam(value = "commodityName", required = false) String commodityName,
+                                                        @RequestParam(value = "commodityId", required = false) String commodityId,
+                                                        @RequestParam(value = "shopId", required = false) String shopId,
+                                                        @RequestParam(value = "commodityPattern", required = false) String commodityPattern,
+                                                        @RequestParam(value = "commodityStatus", required = false) String commodityStatus,
+                                                        @RequestParam(value = "recommended", required = false) String recommended,
+                                                        @RequestParam(value = "pageNum") int pageNum,
+                                                        @RequestParam(value = "pageSize") int pageSize) {
+        return commodityService.getCommodityInfoPage(commodityName, commodityId, shopId, commodityPattern, commodityStatus, recommended, pageNum, pageSize);
+    }
+
+
+    @ApiOperation("查询商品信息")
+    @GetMapping("")
+    public CommodityInfoRes getCommodityInfo(@RequestParam(value = "commodityId") String commodityId) {
+        return commodityService.getCommodityInfo(commodityId);
+    }
+
 
     @PostMapping()
     public ApiResult crtCommodityInfo(@RequestBody CommodityInfoReq commodityInfoReq) {

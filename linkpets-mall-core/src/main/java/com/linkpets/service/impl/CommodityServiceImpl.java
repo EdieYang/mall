@@ -6,11 +6,10 @@ import com.linkpets.dao.CommodityDistributeMapper;
 import com.linkpets.dao.CommodityImgMapper;
 import com.linkpets.dao.CommodityInfoMapper;
 import com.linkpets.dao.CommoditySpecMapper;
-import com.linkpets.mallEnum.SerialNumberEnum;
 import com.linkpets.model.*;
-import com.linkpets.responseModel.commodity.CommodityInfoTable;
+import com.linkpets.responseModel.commodity.CommodityInfoRes;
+import com.linkpets.responseModel.commodity.CommodityPage;
 import com.linkpets.service.ICommodityService;
-import com.linkpets.utils.CommonUtil;
 import com.linkpets.utils.UUIDUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,14 +36,32 @@ public class CommodityServiceImpl implements ICommodityService {
     //公益渠道商品
     private static final String COMMODITY_CHANNEL_CHARITY = "1";
 
-//
-//    @Override
-//    public PageInfo<CommodityInfoTable> listCommodityInfoTable(String commodityName, String commodityId, String shopId, String commodityPattern, String commodityStatus, String recommended, int pageNum, int pageSize) {
-//        PageHelper.startPage(pageNum, pageSize, "create_date DESC");
-//        List<CommodityInfoTable> commodityInfoTables = commodityInfoMapper.listCommodityInfoTable(commodityName, commodityId, shopId, commodityStatus, commodityPattern, recommended);
-//        PageInfo<CommodityInfoTable> commodityInfoTablePageInfo = new PageInfo<>(commodityInfoTables);
-//        return commodityInfoTablePageInfo;
-//    }
+
+    @Override
+    public PageInfo<CommodityPage> getCommodityInfoPage(String commodityName, String commodityId, String shopId, String commodityPattern, String commodityStatus, String recommended, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize, "create_date DESC");
+        List<CommodityPage> commodityInfoTables = commodityInfoMapper.getCommodityInfoPage(commodityName, commodityId, shopId, commodityStatus, commodityPattern, recommended);
+        PageInfo<CommodityPage> commodityPage = new PageInfo<>(commodityInfoTables);
+        return commodityPage;
+    }
+
+    @Override
+    public CommodityInfoRes getCommodityInfo(String commodityId) {
+        CommodityInfoRes commodityInfoRes = new CommodityInfoRes();
+        CommodityInfo commodityInfo = commodityInfoMapper.selectByPrimaryKey(commodityId);
+        List<CommodityImg> commodityImgList = commodityImgMapper.getCommodityImgList(commodityId);
+        if (commodityInfo.getMultiSpec().equals("1")) {
+            List<CommoditySpec> commoditySpecList = commoditySpecMapper.getCommoditySpecList(commodityId);
+            commodityInfoRes.setCommoditySpecList(commoditySpecList);
+        }
+        if (commodityInfo.getDistributed().equals("1")) {
+            List<CommodityDistribute> commodityDistributeList = commodityDistributeMapper.getCommodityDistributeList(commodityId);
+            commodityInfoRes.setCommodityDistributeList(commodityDistributeList);
+        }
+        commodityInfoRes.setCommodityInfo(commodityInfo);
+        commodityInfoRes.setCommodityImgList(commodityImgList);
+        return commodityInfoRes;
+    }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -72,14 +89,14 @@ public class CommodityServiceImpl implements ICommodityService {
         return commodityId;
     }
 
-    @Override
     @Transactional(rollbackFor = Exception.class)
+    @Override
     public void uptCommodityInfo(CommodityInfo commodityInfo, List<CommodityImg> commodityImgList, List<CommoditySpec> commoditySpecList,
                                  List<CommodityDistribute> commodityDistributeList, List<CommodityAppointment> commodityAppointmentList) {
         String commodityId = commodityInfo.getCommodityId();
-        commodityInfo.setUpdateTime(new Date());
+        commodityInfo.setUpdateDate(new Date());
         commodityInfoMapper.updateByPrimaryKeySelective(commodityInfo);
-        commodityImgMapper.delImg(commodityId);
+        commodityImgMapper.delCommodityImg(commodityId);
         commoditySpecMapper.delSpec(commodityId);
         commodityDistributeMapper.delDistribute(commodityId);
         commodityImgList.forEach(commodityImg -> {

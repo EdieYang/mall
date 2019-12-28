@@ -1,435 +1,485 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.linkpets.dao.CommodityInfoMapper">
-  <resultMap id="BaseResultMap" type="com.linkpets.model.CommodityInfo">
-    <id column="commodity_id" jdbcType="VARCHAR" property="commodityId" />
-    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
-    <result column="commodity_type" jdbcType="VARCHAR" property="commodityType" />
-    <result column="commodity_channel" jdbcType="CHAR" property="commodityChannel" />
-    <result column="commodity_status" jdbcType="VARCHAR" property="commodityStatus" />
-    <result column="commodity_pattern" jdbcType="VARCHAR" property="commodityPattern" />
-    <result column="display_img" jdbcType="VARCHAR" property="displayImg" />
-    <result column="sale_date" jdbcType="VARCHAR" property="saleDate" />
-    <result column="charity_price" jdbcType="INTEGER" property="charityPrice" />
-    <result column="market_price" jdbcType="INTEGER" property="marketPrice" />
-    <result column="selling_price" jdbcType="INTEGER" property="sellingPrice" />
-    <result column="purchase_price" jdbcType="INTEGER" property="purchasePrice" />
-    <result column="stock" jdbcType="INTEGER" property="stock" />
-    <result column="stock_warn" jdbcType="INTEGER" property="stockWarn" />
-    <result column="distributed" jdbcType="VARCHAR" property="distributed" />
-    <result column="commodity_rules" jdbcType="VARCHAR" property="commodityRules" />
-    <result column="commodity_usage" jdbcType="VARCHAR" property="commodityUsage" />
-    <result column="commodity_detail" jdbcType="VARCHAR" property="commodityDetail" />
-    <result column="multi_spec" jdbcType="VARCHAR" property="multiSpec" />
-    <result column="recommended" jdbcType="VARCHAR" property="recommended" />
-    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
-    <result column="sale_count" jdbcType="INTEGER" property="saleCount" />
-    <result column="browse_count" jdbcType="INTEGER" property="browseCount" />
-    <result column="show_stock" jdbcType="VARCHAR" property="showStock" />
-    <result column="show_sale" jdbcType="VARCHAR" property="showSale" />
-    <result column="verification_type" jdbcType="VARCHAR" property="verificationType" />
-    <result column="verification_date" jdbcType="VARCHAR" property="verificationDate" />
-    <result column="purchase_limit" jdbcType="INTEGER" property="purchaseLimit" />
-    <result column="customer_support_id" jdbcType="VARCHAR" property="customerSupportId" />
-    <result column="share_title" jdbcType="VARCHAR" property="shareTitle" />
-    <result column="share_info" jdbcType="VARCHAR" property="shareInfo" />
-    <result column="share_wap_img" jdbcType="VARCHAR" property="shareWapImg" />
-    <result column="share_mini_img" jdbcType="VARCHAR" property="shareMiniImg" />
-    <result column="share_post" jdbcType="VARCHAR" property="sharePost" />
-    <result column="purchase_points" jdbcType="INTEGER" property="purchasePoints" />
-    <result column="refund_type" jdbcType="VARCHAR" property="refundType" />
-    <result column="appointment" jdbcType="VARCHAR" property="appointment" />
-    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
-    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    commodity_id, commodity_name, commodity_type, commodity_channel, commodity_status, 
+    <resultMap id="BaseResultMap" type="com.linkpets.model.CommodityInfo">
+        <id column="commodity_id" jdbcType="VARCHAR" property="commodityId"/>
+        <result column="commodity_name" jdbcType="VARCHAR" property="commodityName"/>
+        <result column="commodity_type" jdbcType="VARCHAR" property="commodityType"/>
+        <result column="commodity_channel" jdbcType="CHAR" property="commodityChannel"/>
+        <result column="commodity_status" jdbcType="VARCHAR" property="commodityStatus"/>
+        <result column="commodity_pattern" jdbcType="VARCHAR" property="commodityPattern"/>
+        <result column="display_img" jdbcType="VARCHAR" property="displayImg"/>
+        <result column="sale_date" jdbcType="VARCHAR" property="saleDate"/>
+        <result column="charity_price" jdbcType="INTEGER" property="charityPrice"/>
+        <result column="market_price" jdbcType="INTEGER" property="marketPrice"/>
+        <result column="selling_price" jdbcType="INTEGER" property="sellingPrice"/>
+        <result column="purchase_price" jdbcType="INTEGER" property="purchasePrice"/>
+        <result column="stock" jdbcType="INTEGER" property="stock"/>
+        <result column="stock_warn" jdbcType="INTEGER" property="stockWarn"/>
+        <result column="distributed" jdbcType="VARCHAR" property="distributed"/>
+        <result column="commodity_rules" jdbcType="VARCHAR" property="commodityRules"/>
+        <result column="commodity_usage" jdbcType="VARCHAR" property="commodityUsage"/>
+        <result column="commodity_detail" jdbcType="VARCHAR" property="commodityDetail"/>
+        <result column="multi_spec" jdbcType="VARCHAR" property="multiSpec"/>
+        <result column="recommended" jdbcType="VARCHAR" property="recommended"/>
+        <result column="shop_id" jdbcType="VARCHAR" property="shopId"/>
+        <result column="sale_count" jdbcType="INTEGER" property="saleCount"/>
+        <result column="browse_count" jdbcType="INTEGER" property="browseCount"/>
+        <result column="show_stock" jdbcType="VARCHAR" property="showStock"/>
+        <result column="show_sale" jdbcType="VARCHAR" property="showSale"/>
+        <result column="verification_type" jdbcType="VARCHAR" property="verificationType"/>
+        <result column="verification_date" jdbcType="VARCHAR" property="verificationDate"/>
+        <result column="purchase_limit" jdbcType="INTEGER" property="purchaseLimit"/>
+        <result column="customer_support_id" jdbcType="VARCHAR" property="customerSupportId"/>
+        <result column="share_title" jdbcType="VARCHAR" property="shareTitle"/>
+        <result column="share_info" jdbcType="VARCHAR" property="shareInfo"/>
+        <result column="share_wap_img" jdbcType="VARCHAR" property="shareWapImg"/>
+        <result column="share_mini_img" jdbcType="VARCHAR" property="shareMiniImg"/>
+        <result column="share_post" jdbcType="VARCHAR" property="sharePost"/>
+        <result column="purchase_points" jdbcType="INTEGER" property="purchasePoints"/>
+        <result column="refund_type" jdbcType="VARCHAR" property="refundType"/>
+        <result column="appointment" jdbcType="VARCHAR" property="appointment"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="del_flag" jdbcType="VARCHAR" property="delFlag"/>
+    </resultMap>
+    <resultMap id="BasePageResultMap" type="com.linkpets.responseModel.commodity.CommodityPage">
+        <id column="commodity_id" jdbcType="VARCHAR" property="commodityId"/>
+        <result column="commodity_name" jdbcType="VARCHAR" property="commodityName"/>
+        <result column="on_sale" jdbcType="VARCHAR" property="onSale"/>
+        <result column="commodity_status" jdbcType="VARCHAR" property="commodityStatus"/>
+        <result column="display_img" jdbcType="VARCHAR" property="displayImg"/>
+        <result column="stock" jdbcType="INTEGER" property="stock"/>
+        <result column="browser_amount" jdbcType="INTEGER" property="browserAmount"/>
+        <result column="commodity_pattern" jdbcType="VARCHAR" property="commodityPattern"/>
+        <result column="sale_amount" jdbcType="INTEGER" property="saleAmount"/>
+        <result column="turn_over" jdbcType="INTEGER" property="turnover"/>
+        <result column="distribute_amount" jdbcType="INTEGER" property="distributeAmount"/>
+        <result column="recommended" jdbcType="VARCHAR" property="recommended"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        commodity_id, commodity_name, commodity_type, commodity_channel, commodity_status,
     commodity_pattern, display_img, sale_date, charity_price, market_price, selling_price, 
     purchase_price, stock, stock_warn, distributed, commodity_rules, commodity_usage, 
     commodity_detail, multi_spec, recommended, shop_id, sale_count, browse_count, show_stock, 
     show_sale, verification_type, verification_date, purchase_limit, customer_support_id, 
     share_title, share_info, share_wap_img, share_mini_img, share_post, purchase_points, 
-    refund_type, appointment, create_by, create_date, update_time, del_flag
-  </sql>
-  <insert id="insertSelective" parameterType="com.linkpets.model.CommodityInfo">
-    insert into commodity_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="commodityId != null">
-        commodity_id,
-      </if>
-      <if test="commodityName != null">
+    refund_type, appointment, create_by, create_date, update_date, del_flag
+    </sql>
+    <insert id="insertSelective" parameterType="com.linkpets.model.CommodityInfo">
+        insert into commodity_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commodityId != null">
+                commodity_id,
+            </if>
+            <if test="commodityName != null">
+                commodity_name,
+            </if>
+            <if test="commodityType != null">
+                commodity_type,
+            </if>
+            <if test="commodityChannel != null">
+                commodity_channel,
+            </if>
+            <if test="commodityStatus != null">
+                commodity_status,
+            </if>
+            <if test="commodityPattern != null">
+                commodity_pattern,
+            </if>
+            <if test="displayImg != null">
+                display_img,
+            </if>
+            <if test="saleDate != null">
+                sale_date,
+            </if>
+            <if test="charityPrice != null">
+                charity_price,
+            </if>
+            <if test="marketPrice != null">
+                market_price,
+            </if>
+            <if test="sellingPrice != null">
+                selling_price,
+            </if>
+            <if test="purchasePrice != null">
+                purchase_price,
+            </if>
+            <if test="stock != null">
+                stock,
+            </if>
+            <if test="stockWarn != null">
+                stock_warn,
+            </if>
+            <if test="distributed != null">
+                distributed,
+            </if>
+            <if test="commodityRules != null">
+                commodity_rules,
+            </if>
+            <if test="commodityUsage != null">
+                commodity_usage,
+            </if>
+            <if test="commodityDetail != null">
+                commodity_detail,
+            </if>
+            <if test="multiSpec != null">
+                multi_spec,
+            </if>
+            <if test="recommended != null">
+                recommended,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="saleCount != null">
+                sale_count,
+            </if>
+            <if test="browseCount != null">
+                browse_count,
+            </if>
+            <if test="showStock != null">
+                show_stock,
+            </if>
+            <if test="showSale != null">
+                show_sale,
+            </if>
+            <if test="verificationType != null">
+                verification_type,
+            </if>
+            <if test="verificationDate != null">
+                verification_date,
+            </if>
+            <if test="purchaseLimit != null">
+                purchase_limit,
+            </if>
+            <if test="customerSupportId != null">
+                customer_support_id,
+            </if>
+            <if test="shareTitle != null">
+                share_title,
+            </if>
+            <if test="shareInfo != null">
+                share_info,
+            </if>
+            <if test="shareWapImg != null">
+                share_wap_img,
+            </if>
+            <if test="shareMiniImg != null">
+                share_mini_img,
+            </if>
+            <if test="sharePost != null">
+                share_post,
+            </if>
+            <if test="purchasePoints != null">
+                purchase_points,
+            </if>
+            <if test="refundType != null">
+                refund_type,
+            </if>
+            <if test="appointment != null">
+                appointment,
+            </if>
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commodityId != null">
+                #{commodityId,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityName != null">
+                #{commodityName,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityType != null">
+                #{commodityType,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityChannel != null">
+                #{commodityChannel,jdbcType=CHAR},
+            </if>
+            <if test="commodityStatus != null">
+                #{commodityStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityPattern != null">
+                #{commodityPattern,jdbcType=VARCHAR},
+            </if>
+            <if test="displayImg != null">
+                #{displayImg,jdbcType=VARCHAR},
+            </if>
+            <if test="saleDate != null">
+                #{saleDate,jdbcType=VARCHAR},
+            </if>
+            <if test="charityPrice != null">
+                #{charityPrice,jdbcType=INTEGER},
+            </if>
+            <if test="marketPrice != null">
+                #{marketPrice,jdbcType=INTEGER},
+            </if>
+            <if test="sellingPrice != null">
+                #{sellingPrice,jdbcType=INTEGER},
+            </if>
+            <if test="purchasePrice != null">
+                #{purchasePrice,jdbcType=INTEGER},
+            </if>
+            <if test="stock != null">
+                #{stock,jdbcType=INTEGER},
+            </if>
+            <if test="stockWarn != null">
+                #{stockWarn,jdbcType=INTEGER},
+            </if>
+            <if test="distributed != null">
+                #{distributed,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityRules != null">
+                #{commodityRules,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityUsage != null">
+                #{commodityUsage,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityDetail != null">
+                #{commodityDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="multiSpec != null">
+                #{multiSpec,jdbcType=VARCHAR},
+            </if>
+            <if test="recommended != null">
+                #{recommended,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="saleCount != null">
+                #{saleCount,jdbcType=INTEGER},
+            </if>
+            <if test="browseCount != null">
+                #{browseCount,jdbcType=INTEGER},
+            </if>
+            <if test="showStock != null">
+                #{showStock,jdbcType=VARCHAR},
+            </if>
+            <if test="showSale != null">
+                #{showSale,jdbcType=VARCHAR},
+            </if>
+            <if test="verificationType != null">
+                #{verificationType,jdbcType=VARCHAR},
+            </if>
+            <if test="verificationDate != null">
+                #{verificationDate,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseLimit != null">
+                #{purchaseLimit,jdbcType=INTEGER},
+            </if>
+            <if test="customerSupportId != null">
+                #{customerSupportId,jdbcType=VARCHAR},
+            </if>
+            <if test="shareTitle != null">
+                #{shareTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="shareInfo != null">
+                #{shareInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="shareWapImg != null">
+                #{shareWapImg,jdbcType=VARCHAR},
+            </if>
+            <if test="shareMiniImg != null">
+                #{shareMiniImg,jdbcType=VARCHAR},
+            </if>
+            <if test="sharePost != null">
+                #{sharePost,jdbcType=VARCHAR},
+            </if>
+            <if test="purchasePoints != null">
+                #{purchasePoints,jdbcType=INTEGER},
+            </if>
+            <if test="refundType != null">
+                #{refundType,jdbcType=VARCHAR},
+            </if>
+            <if test="appointment != null">
+                #{appointment,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy != null">
+                #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.linkpets.model.CommodityInfo">
+        update commodity_info
+        <set>
+            <if test="commodityName != null">
+                commodity_name = #{commodityName,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityType != null">
+                commodity_type = #{commodityType,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityChannel != null">
+                commodity_channel = #{commodityChannel,jdbcType=CHAR},
+            </if>
+            <if test="commodityStatus != null">
+                commodity_status = #{commodityStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityPattern != null">
+                commodity_pattern = #{commodityPattern,jdbcType=VARCHAR},
+            </if>
+            <if test="displayImg != null">
+                display_img = #{displayImg,jdbcType=VARCHAR},
+            </if>
+            <if test="saleDate != null">
+                sale_date = #{saleDate,jdbcType=VARCHAR},
+            </if>
+            <if test="charityPrice != null">
+                charity_price = #{charityPrice,jdbcType=INTEGER},
+            </if>
+            <if test="marketPrice != null">
+                market_price = #{marketPrice,jdbcType=INTEGER},
+            </if>
+            <if test="sellingPrice != null">
+                selling_price = #{sellingPrice,jdbcType=INTEGER},
+            </if>
+            <if test="purchasePrice != null">
+                purchase_price = #{purchasePrice,jdbcType=INTEGER},
+            </if>
+            <if test="stock != null">
+                stock = #{stock,jdbcType=INTEGER},
+            </if>
+            <if test="stockWarn != null">
+                stock_warn = #{stockWarn,jdbcType=INTEGER},
+            </if>
+            <if test="distributed != null">
+                distributed = #{distributed,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityRules != null">
+                commodity_rules = #{commodityRules,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityUsage != null">
+                commodity_usage = #{commodityUsage,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityDetail != null">
+                commodity_detail = #{commodityDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="multiSpec != null">
+                multi_spec = #{multiSpec,jdbcType=VARCHAR},
+            </if>
+            <if test="recommended != null">
+                recommended = #{recommended,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="saleCount != null">
+                sale_count = #{saleCount,jdbcType=INTEGER},
+            </if>
+            <if test="browseCount != null">
+                browse_count = #{browseCount,jdbcType=INTEGER},
+            </if>
+            <if test="showStock != null">
+                show_stock = #{showStock,jdbcType=VARCHAR},
+            </if>
+            <if test="showSale != null">
+                show_sale = #{showSale,jdbcType=VARCHAR},
+            </if>
+            <if test="verificationType != null">
+                verification_type = #{verificationType,jdbcType=VARCHAR},
+            </if>
+            <if test="verificationDate != null">
+                verification_date = #{verificationDate,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseLimit != null">
+                purchase_limit = #{purchaseLimit,jdbcType=INTEGER},
+            </if>
+            <if test="customerSupportId != null">
+                customer_support_id = #{customerSupportId,jdbcType=VARCHAR},
+            </if>
+            <if test="shareTitle != null">
+                share_title = #{shareTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="shareInfo != null">
+                share_info = #{shareInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="shareWapImg != null">
+                share_wap_img = #{shareWapImg,jdbcType=VARCHAR},
+            </if>
+            <if test="shareMiniImg != null">
+                share_mini_img = #{shareMiniImg,jdbcType=VARCHAR},
+            </if>
+            <if test="sharePost != null">
+                share_post = #{sharePost,jdbcType=VARCHAR},
+            </if>
+            <if test="purchasePoints != null">
+                purchase_points = #{purchasePoints,jdbcType=INTEGER},
+            </if>
+            <if test="refundType != null">
+                refund_type = #{refundType,jdbcType=VARCHAR},
+            </if>
+            <if test="appointment != null">
+                appointment = #{appointment,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy != null">
+                create_by = #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where commodity_id = #{commodityId,jdbcType=VARCHAR}
+    </update>
+    <select id="getCommodityInfoPage" resultMap="BasePageResultMap">
+        select commodity_id,
         commodity_name,
-      </if>
-      <if test="commodityType != null">
-        commodity_type,
-      </if>
-      <if test="commodityChannel != null">
-        commodity_channel,
-      </if>
-      <if test="commodityStatus != null">
         commodity_status,
-      </if>
-      <if test="commodityPattern != null">
         commodity_pattern,
-      </if>
-      <if test="displayImg != null">
         display_img,
-      </if>
-      <if test="saleDate != null">
         sale_date,
-      </if>
-      <if test="charityPrice != null">
-        charity_price,
-      </if>
-      <if test="marketPrice != null">
-        market_price,
-      </if>
-      <if test="sellingPrice != null">
-        selling_price,
-      </if>
-      <if test="purchasePrice != null">
-        purchase_price,
-      </if>
-      <if test="stock != null">
         stock,
-      </if>
-      <if test="stockWarn != null">
-        stock_warn,
-      </if>
-      <if test="distributed != null">
-        distributed,
-      </if>
-      <if test="commodityRules != null">
-        commodity_rules,
-      </if>
-      <if test="commodityUsage != null">
-        commodity_usage,
-      </if>
-      <if test="commodityDetail != null">
-        commodity_detail,
-      </if>
-      <if test="multiSpec != null">
-        multi_spec,
-      </if>
-      <if test="recommended != null">
+        0 as browser_amount,
+        0 as sale_amount,
+        0 as turn_over,
+        0 as distribute_amount,
         recommended,
-      </if>
-      <if test="shopId != null">
-        shop_id,
-      </if>
-      <if test="saleCount != null">
-        sale_count,
-      </if>
-      <if test="browseCount != null">
-        browse_count,
-      </if>
-      <if test="showStock != null">
-        show_stock,
-      </if>
-      <if test="showSale != null">
-        show_sale,
-      </if>
-      <if test="verificationType != null">
-        verification_type,
-      </if>
-      <if test="verificationDate != null">
-        verification_date,
-      </if>
-      <if test="purchaseLimit != null">
-        purchase_limit,
-      </if>
-      <if test="customerSupportId != null">
-        customer_support_id,
-      </if>
-      <if test="shareTitle != null">
-        share_title,
-      </if>
-      <if test="shareInfo != null">
-        share_info,
-      </if>
-      <if test="shareWapImg != null">
-        share_wap_img,
-      </if>
-      <if test="shareMiniImg != null">
-        share_mini_img,
-      </if>
-      <if test="sharePost != null">
-        share_post,
-      </if>
-      <if test="purchasePoints != null">
-        purchase_points,
-      </if>
-      <if test="refundType != null">
-        refund_type,
-      </if>
-      <if test="appointment != null">
-        appointment,
-      </if>
-      <if test="createBy != null">
-        create_by,
-      </if>
-      <if test="createDate != null">
-        create_date,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-      <if test="delFlag != null">
-        del_flag,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="commodityId != null">
-        #{commodityId,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityName != null">
-        #{commodityName,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityType != null">
-        #{commodityType,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityChannel != null">
-        #{commodityChannel,jdbcType=CHAR},
-      </if>
-      <if test="commodityStatus != null">
-        #{commodityStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityPattern != null">
-        #{commodityPattern,jdbcType=VARCHAR},
-      </if>
-      <if test="displayImg != null">
-        #{displayImg,jdbcType=VARCHAR},
-      </if>
-      <if test="saleDate != null">
-        #{saleDate,jdbcType=VARCHAR},
-      </if>
-      <if test="charityPrice != null">
-        #{charityPrice,jdbcType=INTEGER},
-      </if>
-      <if test="marketPrice != null">
-        #{marketPrice,jdbcType=INTEGER},
-      </if>
-      <if test="sellingPrice != null">
-        #{sellingPrice,jdbcType=INTEGER},
-      </if>
-      <if test="purchasePrice != null">
-        #{purchasePrice,jdbcType=INTEGER},
-      </if>
-      <if test="stock != null">
-        #{stock,jdbcType=INTEGER},
-      </if>
-      <if test="stockWarn != null">
-        #{stockWarn,jdbcType=INTEGER},
-      </if>
-      <if test="distributed != null">
-        #{distributed,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityRules != null">
-        #{commodityRules,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityUsage != null">
-        #{commodityUsage,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityDetail != null">
-        #{commodityDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="multiSpec != null">
-        #{multiSpec,jdbcType=VARCHAR},
-      </if>
-      <if test="recommended != null">
-        #{recommended,jdbcType=VARCHAR},
-      </if>
-      <if test="shopId != null">
-        #{shopId,jdbcType=VARCHAR},
-      </if>
-      <if test="saleCount != null">
-        #{saleCount,jdbcType=INTEGER},
-      </if>
-      <if test="browseCount != null">
-        #{browseCount,jdbcType=INTEGER},
-      </if>
-      <if test="showStock != null">
-        #{showStock,jdbcType=VARCHAR},
-      </if>
-      <if test="showSale != null">
-        #{showSale,jdbcType=VARCHAR},
-      </if>
-      <if test="verificationType != null">
-        #{verificationType,jdbcType=VARCHAR},
-      </if>
-      <if test="verificationDate != null">
-        #{verificationDate,jdbcType=VARCHAR},
-      </if>
-      <if test="purchaseLimit != null">
-        #{purchaseLimit,jdbcType=INTEGER},
-      </if>
-      <if test="customerSupportId != null">
-        #{customerSupportId,jdbcType=VARCHAR},
-      </if>
-      <if test="shareTitle != null">
-        #{shareTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="shareInfo != null">
-        #{shareInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="shareWapImg != null">
-        #{shareWapImg,jdbcType=VARCHAR},
-      </if>
-      <if test="shareMiniImg != null">
-        #{shareMiniImg,jdbcType=VARCHAR},
-      </if>
-      <if test="sharePost != null">
-        #{sharePost,jdbcType=VARCHAR},
-      </if>
-      <if test="purchasePoints != null">
-        #{purchasePoints,jdbcType=INTEGER},
-      </if>
-      <if test="refundType != null">
-        #{refundType,jdbcType=VARCHAR},
-      </if>
-      <if test="appointment != null">
-        #{appointment,jdbcType=VARCHAR},
-      </if>
-      <if test="createBy != null">
-        #{createBy,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null">
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="delFlag != null">
-        #{delFlag,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.linkpets.model.CommodityInfo">
-    update commodity_info
-    <set>
-      <if test="commodityName != null">
-        commodity_name = #{commodityName,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityType != null">
-        commodity_type = #{commodityType,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityChannel != null">
-        commodity_channel = #{commodityChannel,jdbcType=CHAR},
-      </if>
-      <if test="commodityStatus != null">
-        commodity_status = #{commodityStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityPattern != null">
-        commodity_pattern = #{commodityPattern,jdbcType=VARCHAR},
-      </if>
-      <if test="displayImg != null">
-        display_img = #{displayImg,jdbcType=VARCHAR},
-      </if>
-      <if test="saleDate != null">
-        sale_date = #{saleDate,jdbcType=VARCHAR},
-      </if>
-      <if test="charityPrice != null">
-        charity_price = #{charityPrice,jdbcType=INTEGER},
-      </if>
-      <if test="marketPrice != null">
-        market_price = #{marketPrice,jdbcType=INTEGER},
-      </if>
-      <if test="sellingPrice != null">
-        selling_price = #{sellingPrice,jdbcType=INTEGER},
-      </if>
-      <if test="purchasePrice != null">
-        purchase_price = #{purchasePrice,jdbcType=INTEGER},
-      </if>
-      <if test="stock != null">
-        stock = #{stock,jdbcType=INTEGER},
-      </if>
-      <if test="stockWarn != null">
-        stock_warn = #{stockWarn,jdbcType=INTEGER},
-      </if>
-      <if test="distributed != null">
-        distributed = #{distributed,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityRules != null">
-        commodity_rules = #{commodityRules,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityUsage != null">
-        commodity_usage = #{commodityUsage,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityDetail != null">
-        commodity_detail = #{commodityDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="multiSpec != null">
-        multi_spec = #{multiSpec,jdbcType=VARCHAR},
-      </if>
-      <if test="recommended != null">
-        recommended = #{recommended,jdbcType=VARCHAR},
-      </if>
-      <if test="shopId != null">
-        shop_id = #{shopId,jdbcType=VARCHAR},
-      </if>
-      <if test="saleCount != null">
-        sale_count = #{saleCount,jdbcType=INTEGER},
-      </if>
-      <if test="browseCount != null">
-        browse_count = #{browseCount,jdbcType=INTEGER},
-      </if>
-      <if test="showStock != null">
-        show_stock = #{showStock,jdbcType=VARCHAR},
-      </if>
-      <if test="showSale != null">
-        show_sale = #{showSale,jdbcType=VARCHAR},
-      </if>
-      <if test="verificationType != null">
-        verification_type = #{verificationType,jdbcType=VARCHAR},
-      </if>
-      <if test="verificationDate != null">
-        verification_date = #{verificationDate,jdbcType=VARCHAR},
-      </if>
-      <if test="purchaseLimit != null">
-        purchase_limit = #{purchaseLimit,jdbcType=INTEGER},
-      </if>
-      <if test="customerSupportId != null">
-        customer_support_id = #{customerSupportId,jdbcType=VARCHAR},
-      </if>
-      <if test="shareTitle != null">
-        share_title = #{shareTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="shareInfo != null">
-        share_info = #{shareInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="shareWapImg != null">
-        share_wap_img = #{shareWapImg,jdbcType=VARCHAR},
-      </if>
-      <if test="shareMiniImg != null">
-        share_mini_img = #{shareMiniImg,jdbcType=VARCHAR},
-      </if>
-      <if test="sharePost != null">
-        share_post = #{sharePost,jdbcType=VARCHAR},
-      </if>
-      <if test="purchasePoints != null">
-        purchase_points = #{purchasePoints,jdbcType=INTEGER},
-      </if>
-      <if test="refundType != null">
-        refund_type = #{refundType,jdbcType=VARCHAR},
-      </if>
-      <if test="appointment != null">
-        appointment = #{appointment,jdbcType=VARCHAR},
-      </if>
-      <if test="createBy != null">
-        create_by = #{createBy,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null">
-        create_date = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="delFlag != null">
-        del_flag = #{delFlag,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where commodity_id = #{commodityId,jdbcType=VARCHAR}
-  </update>
+        create_date
+        from commodity_info
+        where del_flag = 1
+        <if test="commodityId != null">
+            and commodity_id= #{commodityId,jdbcType=VARCHAR}
+        </if>
+        <if test="commodityName != null and commodityName !=''">
+            and commodity_name like CONCAT('%',#{commodityName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="shopId != null">
+            and shop_id= #{shopId,jdbcType=VARCHAR}
+        </if>
+        <if test="recommended != null">
+            and recommended= #{recommended,jdbcType=VARCHAR}
+        </if>
+        <if test="commodityPattern != null">
+            and commodity_pattern= #{commodityPattern,jdbcType=VARCHAR}
+        </if>
+        <if test="commodityStatus != null">
+            and commodity_status= #{commodityStatus,jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>
