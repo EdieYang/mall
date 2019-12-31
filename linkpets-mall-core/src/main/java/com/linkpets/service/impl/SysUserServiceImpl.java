@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class ISysUserServiceImpl implements ISysUserService {
+public class SysUserServiceImpl implements ISysUserService {
 
     @Resource
     private SysUserMapper sysUserMapper;
